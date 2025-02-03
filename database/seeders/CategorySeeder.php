@@ -21,29 +21,14 @@ class CategorySeeder extends Seeder
                 'color' => '#B40000',
             ],
             [
-                'name' => 'Mocktailler',
-                'icon' => 'fa-solid fa-wine-glass-empty',
-                'color' => '#B40000',
-            ],
-            [
-                'name' => 'Atıştırmalıklar',
+                'name' => 'Tuzlular',
                 'icon' => 'fa-solid fa-burger',
                 'color' => '#A35200',
             ],
             [
-                'name' => 'Ekstralar',
-                'icon' => 'fa-solid fa-bolt-lightning',
-                'color' => '#120A8F',
-            ],
-            [
-                'name' => 'Abur Cuburlar',
-                'icon' => 'fa-solid fa-cookie-bite',
+                'name' => 'Tatlılar',
+                'icon' => "fa-solid fa-candy-cane",
                 'color' => '#A35200',
-            ],
-            [
-                'name' => 'Aksesuarlar',
-                'icon' => 'fa-solid fa-motorcycle',
-                'color' => '#000000',
             ],
         ];
 

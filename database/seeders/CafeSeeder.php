@@ -13,13 +13,13 @@ class CafeSeeder extends Seeder
     public function run(): void
     {
         DB::table('cafes')->insert([
-            'name' => 'Underground',
-            'phone' => '+90 (544) 278 35 43',
-            'address' => 'Kartaltepe Mah. Gençler Cd. No: 2B Bakirköy/İstanbul',
-            'address_link' => 'https://g.co/kgs/iJPTUCx',
-            'insta_name' => 'undergroundcoffee.shop',
-            'insta_link' => 'https://www.instagram.com/undergroundcoffee.shop',
-            'description' => '"Şehrin gizli cenneti; Yeraltı Kahve Evi"',
+            'name' => 'Copper',
+            'phone' => '',
+            'address' => 'Cevizlik Mah. Dantelacı Sk. No:5/A Bakirköy/İstanbul',
+            'address_link' => '',
+            'insta_name' => 'copper_cafe',
+            'insta_link' => '',
+            'description' => '',
             'opening_time' => '10:00',
             'closing_time' => '23:00',
             'created_at' => now(),
