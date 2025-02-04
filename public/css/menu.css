@@ -472,10 +472,9 @@ button {
 }
 
 .footer-logo {
-    width: 45px;
+    width: 20px;
     height: auto;
-    margin-bottom: 8px;
-    filter: brightness(0) invert(1);
+    margin-bottom: 7px;
 }
 
 .contact-title {

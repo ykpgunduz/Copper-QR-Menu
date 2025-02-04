@@ -208,10 +208,11 @@
             </div>
             <div class="copyright">
                 <a href="https://harpysocial.com" target="_blank" class="copyright-link">
+                    <img src="{{ asset('img/footer-logo.png') }}" alt="Logo" class="footer-logo" style="width: 18px;">
                     Harpy Social &copy; 2025
                 </a>
                 <span class="copyright-divider">|</span>
-                <span>Tüm hakları saklıdır.</span>
+                <span>Tüm Hakları Saklıdır.</span>
             </div>
         </div>
     </div>

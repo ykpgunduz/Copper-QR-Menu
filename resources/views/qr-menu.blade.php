@@ -124,7 +124,7 @@
             <div class="container">
                 <div class="contact-card">
                     <div class="contact-header">
-                        <img src="{{ asset('img/logo.png') }}" alt="Logo" class="footer-logo">
+                        <img src="{{ asset('img/logo.png') }}" alt="Logo" class="footer-logo" style="width: 80px;">
                         <h4 class="contact-title">{{ $cafe->name }}</h4>
                     </div>
                     <div class="contact-info">
@@ -145,10 +145,11 @@
                 </div>
                 <div class="copyright">
                     <a href="https://harpysocial.com" target="_blank" class="copyright-link">
+                        <img src="{{ asset('img/footer-logo.png') }}" alt="Logo" class="footer-logo">
                         Harpy Social &copy; 2025
                     </a>
                     <span class="copyright-divider">|</span>
-                    <span>Tüm hakları saklıdır.</span>
+                    <span>Tüm Hakları Saklıdır.</span>
                 </div>
             </div>
         </div>
