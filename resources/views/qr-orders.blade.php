@@ -149,15 +149,33 @@
                                 <td>{{ $item->price }}₺</td>
                             </tr>
                         @endforeach
-                        <tr>
-                            @if ($order->ikram > 0)
-                                <td colspan="2" class="text-end"><strong>Toplam Tutar:</strong></td>
-                                <td><strong><del>{{ $order->total_amount + $order->ikram }}₺</del> <span class="text-success"> {{ $order->total_amount }}₺</span></strong></td>
-                            @else
-                                <td colspan="2" class="text-end"><strong>Toplam Tutar:</strong></td>
-                                <td><strong>{{ $order->total_amount }}₺</strong></td>
-                            @endif
-                        </tr>
+                        @if ($order->ikram > 0)
+                            <tr>
+                                <td colspan="2" class="text-end">
+                                    <strong>Toplam Tutar:</strong>
+                                </td>
+                                <td>
+                                    <strong><del>{{ $order->total_amount + $order->ikram }}₺</del></strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="text-end">
+                                    <strong>Self Servis İndirimli:</strong>
+                                </td>
+                                <td>
+                                    <strong class="text-success">{{ $order->total_amount }}₺</strong>
+                                </td>
+                            </tr>
+                        @else
+                            <tr>
+                                <td colspan="2" class="text-end">
+                                    <strong>Toplam Tutar:</strong>
+                                </td>
+                                <td>
+                                    <strong>{{ $order->total_amount }}₺</strong>
+                                </td>
+                            </tr>
+                        @endif
                     </tbody>
                 </table>
             </div>
