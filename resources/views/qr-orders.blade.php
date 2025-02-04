@@ -120,7 +120,7 @@
 
             <div class="container text-dark">
                 <div class="d-flex justify-content-between">
-                    <p>Masa No: {{ $order->table_number }}</p>
+                    <p>{{ $order->table_number }}. Masa</p>
                     <p>Saat: {{ $order->updated_at->format('H:i') }}</p>
                 </div>
                 <table class="table text-dark">
@@ -151,8 +151,8 @@
                         @endforeach
                         <tr>
                             @if ($order->ikram > 0)
-                                <td colspan="2" class="text-end"><strong>Self Servis İndirimli Tutarı:</strong></td>
-                                <td colspan="3"><strong><span class="text-success">{{ $order->total_amount }}₺</span></strong></td>
+                                <td colspan="2" class="text-end"><strong>Toplam Tutar:</strong></td>
+                                <td><strong><del>{{ $order->total_amount + $order->ikram }}₺</del> <span class="text-success"> {{ $order->total_amount }}₺</span></strong></td>
                             @else
                                 <td colspan="2" class="text-end"><strong>Toplam Tutar:</strong></td>
                                 <td><strong>{{ $order->total_amount }}₺</strong></td>

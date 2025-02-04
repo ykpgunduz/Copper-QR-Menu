@@ -122,8 +122,10 @@ class CalculationResource extends Resource
                     <div style="width: 120px; box-shadow: 0px 0px 5px 5px rgba(255, 0, 255, 0.7); opacity: 0.7; padding: 5px; margin: 0 15px 0 15px; text-align: center;">Hesabı İstiyor</div>
                     <div style="width: 120px; box-shadow: 0px 0px 5px 5px rgba(0, 255, 0, 0.7); opacity: 0.7; padding: 5px; margin: 0 15px 0 15px; text-align: center; ">Masa Servisi</div>
                     <div style="width: 120px; box-shadow: 0px 0px 5px 5px rgba(0, 190, 255, 0.7); opacity: 0.7; padding: 5px; margin: 0 15px 0 15px; text-align: center;">Self Servis</div>
-                    <!-- <div style="width: 120px; box-shadow: 0px 0px 5px 5px rgba(255, 193, 7, 0.7); opacity: 0.7; padding: 5px; margin: 0 15px 0 15px; text-align: center;">Durgun Masa</div> -->
                     <div style="width: 120px; box-shadow: 0px 0px 5px 5px rgba(128, 128, 128, 0.7); opacity: 0.7; padding: 5px; margin: 0 15px 0 15px; text-align: center;">Masa Askıda</div>
+                    <div style="width: 230px; box-shadow: 0px 0px 5px 5px rgba(128, 128, 128, 0.3); opacity: 0.7; padding: 5px; margin: 0 15px 0 15px; text-align: center; font-size: 12px;">
+                        Bahçe: 1-3 | Bar: 4-12 | Salon: 13-20
+                    </div>
                 </div>
             '))
             ->query(Calculation::query()->orderBy('table_number'))
@@ -133,7 +135,15 @@ class CalculationResource extends Resource
                         ->url(fn (Calculation $record) => '/admin/orders?tableFilters[table_number][value]=' . $record->table_number)
                         ->weight(FontWeight::Bold)
                         ->html()
-                        ->formatStateUsing(fn ($state) => '<span style="font-size: 20px; font-weight: bold;">' . $state . '. Masa</span>'),
+                        ->formatStateUsing(function ($state) {
+                            $prefix = match(true) {
+                                in_array($state, [1,2,3]) => 'Bahçe',
+                                in_array($state, [4,5,6,7,8,9,10,11,12]) => 'Bar',
+                                in_array($state, [13,14,15,16,17,18,19,20]) => 'Salon',
+                                default => ''
+                            };
+                            return '<span style="font-size: 20px; font-weight: bold;">' . $prefix . ' ' . $state . '</span>';
+                        }),
                         Grid::make(2)
                         ->schema([
                             TextColumn::make('total_amount')
