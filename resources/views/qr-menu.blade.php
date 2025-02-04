@@ -125,7 +125,7 @@
                 <div class="contact-card">
                     <div class="contact-header">
                         <img src="{{ asset('img/logo.png') }}" alt="Logo" class="footer-logo" style="width: 80px;">
-                        <h4 class="contact-title">{{ $cafe->name }}</h4>
+                        <h4 class="contact-title">{{ $cafe->name }} Coffee Shop</h4>
                     </div>
                     <div class="contact-info">
                         <a href="tel:{{ $cafe->phone }}" class="contact-link">
