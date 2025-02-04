@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Menü | Underground</title>
+    <title>Menü | {{ $cafe->name }}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="{{ asset('img/favicon.png') }}" rel="icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">

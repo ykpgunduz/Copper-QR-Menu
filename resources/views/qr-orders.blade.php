@@ -21,7 +21,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="{{ asset('css/order.css') }}" rel="stylesheet">
-    <title>Siparişler | Underground</title>
+    <title>Siparişlerim</title>
 </head>
 
 <body>

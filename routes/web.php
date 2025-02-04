@@ -8,11 +8,7 @@ use App\Http\Controllers\RatingController;
 use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\ProductController;
 
-Route::get('/', function () { return view('home'); });
-Route::get('/about-us', function () { return view('about'); });
-Route::get('/our-services', function () { return view('services'); });
-Route::get('/our-projects', function () { return view('projects'); });
-Route::get('/contact-us', function () { return view('contact'); });
+Route::get('/', function () {return redirect('https://harpysocial.com');});
 
 Route::get('/qr-menu', [HomeController::class, 'index'])->name('index');
 Route::post('/qr-menu', [HomeController::class, 'addToCart'])->name('addToCart');

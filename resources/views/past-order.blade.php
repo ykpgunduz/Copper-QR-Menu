@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ asset('img/favicon.png') }}" type="image/x-icon">
-    <title>Geçmiş Sipariş</title>
+    <title>Geçmiş Sipariş | {{ $cafe->name }}</title>
     <style>
         body {
             font-family: 'Roboto', Arial, sans-serif;
