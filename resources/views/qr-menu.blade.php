@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Menü | {{ $cafe->name }}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="{{ asset('img/favicon.png') }}" rel="icon">
+    <link rel="icon" href="{{ asset('img/favicon.png') }}" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">

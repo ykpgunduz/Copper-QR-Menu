@@ -5,8 +5,6 @@
     <meta charset="utf-8">
     <title>Sipariş Ürünleri | {{ $cafe->name }}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
@@ -17,7 +15,7 @@
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <link href="{{ asset('img/favicon.png') }}" rel="icon">
+    <link rel="icon" href="{{ asset('img/favicon.png') }}" type="image/x-icon">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         .cart-container {
