@@ -240,7 +240,7 @@
     <div class="container">
         <div class="header">
             <div style="display: flex; align-items: center; justify-content: center;">
-                <img src="{{ asset('img/underground-siyah.png') }}" alt="Logo" style="width: 50px; height: 50px; border-radius: 8px; margin-right: 10px;">
+                <img src="{{ asset('img/adisyon-logo.png') }}" alt="Logo" style="width: 45px; height: 45px; border-radius: 8px; margin-right: 3px;">
                 <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
                     <h1>{{ $cafe_name }}</h1>
                     <div style="font-size: 12px; color: #444; margin: 2px 0 2px 1px; font-style: italic; font-weight: 500; letter-spacing: 0.5px;">COFFEE SHOP</div>

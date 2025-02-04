@@ -123,7 +123,7 @@ class CalculationResource extends Resource
                     <div style="width: 120px; box-shadow: 0px 0px 5px 5px rgba(0, 255, 0, 0.7); opacity: 0.7; padding: 5px; margin: 0 15px 0 15px; text-align: center; ">Masa Servisi</div>
                     <div style="width: 120px; box-shadow: 0px 0px 5px 5px rgba(0, 190, 255, 0.7); opacity: 0.7; padding: 5px; margin: 0 15px 0 15px; text-align: center;">Self Servis</div>
                     <div style="width: 120px; box-shadow: 0px 0px 5px 5px rgba(128, 128, 128, 0.7); opacity: 0.7; padding: 5px; margin: 0 15px 0 15px; text-align: center;">Masa Askıda</div>
-                    <div style="width: 230px; box-shadow: 0px 0px 5px 5px rgba(128, 128, 128, 0.3); opacity: 0.7; padding: 5px; margin: 0 15px 0 15px; text-align: center; font-size: 12px;">
+                    <div style="width: 250px; box-shadow: 0px 0px 5px 5px rgba(128, 128, 128, 0.3); opacity: 0.8; padding: 5px; margin: 0 15px 0 15px; text-align: center; font-size: 13px;">
                         Bahçe: 1-3 | Bar: 4-12 | Salon: 13-20
                     </div>
                 </div>

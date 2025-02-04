@@ -200,35 +200,39 @@
     <!-- Footer End -->
 
     <nav class="navbar navbar-expand-lg fixed-bottom">
-        <div class="container d-flex justify-content-center">
+        <div class="container d-flex flex-column justify-content-center">
             @if ($order->status === 'Hesap')
-            <p class="text-light my-2"><i class="fa-solid fa-circle-info"></i> Hesap isteğiniz bize ulaştı teşekkür ederiz.</p>
+                <p class="text-light my-2"><i class="fa-solid fa-circle-info"></i> Hesap isteğiniz bize ulaştı teşekkür ederiz.</p>
+                <div class="d-flex justify-content-center mb-2">
+                    <a class="btn btn-warning btn-md ms-2"><i class="fa-solid fa-clock"></i> Hesap İstendi</a>
+                    <a href="{{ route('index', ['table' => $tableNumber]) }}" class="btn btn-light btn-md ms-2"><i class="fa-solid fa-book-open"></i> Menüye Dön</a>
+                </div>
+            @elseif ($order->status === 'Self')
+                <p class="text-light my-2"><i class="fa-solid fa-circle-info"></i> Farklı bir sipariş için menüye dönebilirsiniz.</p>
+                <div class="d-flex justify-content-center mb-2">
+                    <a href="{{ route('index', ['table' => $tableNumber]) }}" class="btn btn-light btn-md ms-2"><i class="fa-solid fa-book-open"></i> Menüye Dön</a>
+                </div>
             @else
-            <p class="text-light my-2"><i class="fa-solid fa-circle-info"></i> Masanızdan kalkmadan hesabı isteyebilirsiniz.</p>
+                <p class="text-light my-2"><i class="fa-solid fa-circle-info"></i> Masanızdan kalkmadan hesabı isteyebilirsiniz.</p>
+                <div class="d-flex justify-content-center mb-2">
+                    <form action="{{ route('order.come') }}" method="POST" onsubmit="return confirmSubmit();">
+                        @csrf
+                        <input type="hidden" name="table_number" value="{{ $order->table_number }}">
+                        <button type="submit" class="btn btn-light btn-md ms-2">
+                            <i class="fa-solid fa-credit-card"></i> Hesabı İste
+                        </button>
+                    </form>
+                    <a href="{{ route('index', ['table' => $tableNumber]) }}" class="btn btn-light btn-md ms-2"><i class="fa-solid fa-book-open"></i> Menüye Dön</a>
+                </div>
             @endif
-            <div class="container d-flex justify-content-center mb-2">
-            @if ($order->status === 'Hesap')
-                <a class="btn btn-warning btn-md ms-2"><i class="fa-solid fa-clock"></i> Hesap İstendi</a>
-            @else
-            <form action="{{ route('order.come') }}" method="POST" onsubmit="return confirmSubmit();">
-                @csrf
-                <input type="hidden" name="table_number" value="{{ $order->table_number }}">
-                <button type="submit" class="btn btn-light btn-md ms-2">
-                    <i class="fa-solid fa-credit-card"></i> Hesabı İste
-                </button>
-            </form>
-
-            <script>
-                function confirmSubmit() {
-                    return confirm("Hesabı istediğinize emin misiniz?");
-                }
-            </script>
-
-            @endif
-                <a href="{{ route('index', ['table' => $tableNumber]) }}" class="btn btn-light btn-md ms-2"><i class="fa-solid fa-book-open"></i> Menüye Dön</a>
-            </div>
         </div>
     </nav>
+
+    <script>
+        function confirmSubmit() {
+            return confirm("Hesabı istediğinize emin misiniz?");
+        }
+    </script>
 
     <script>
         setInterval(function() {
