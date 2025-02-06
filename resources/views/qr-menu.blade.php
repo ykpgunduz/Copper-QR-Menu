@@ -88,7 +88,6 @@
                                             </div>
                                             <div class="item-info">
                                                 <h3>{{ $product->title }}</h3>
-                                                <p class="product-description">{{ Str::limit($product->body, 25) }}</p>
                                                 <h4>{{ $product->price }}₺</h4>
                                             </div>
                                             <div class="product-actions">
