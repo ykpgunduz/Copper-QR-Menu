@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Menü | {{ $cafe->name }}</title>
+    <title>Menü | Copper</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link rel="icon" href="{{ asset('img/favicon.png') }}" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -125,7 +125,7 @@
                 <div class="contact-card">
                     <div class="contact-header">
                         <img src="{{ asset('img/logo.png') }}" alt="Logo" class="footer-logo" style="width: 80px;">
-                        <h4 class="contact-title">{{ $cafe->name }} Coffee Shop</h4>
+                        <h4 class="contact-title">Copper Coffee Shop</h4>
                     </div>
                     <div class="contact-info">
                         <a href="tel:{{ $cafe->phone }}" class="contact-link">

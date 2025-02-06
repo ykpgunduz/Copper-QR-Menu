@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ asset('img/favicon.png') }}" type="image/x-icon">
-    <title>Geçmiş Sipariş | {{ $cafe->name }}</title>
+    <title>Geçmiş Sipariş | Copper</title>
     <style>
         body {
             font-family: 'Roboto', Arial, sans-serif;
@@ -187,7 +187,7 @@
             <div style="display: flex; align-items: center; justify-content: center;">
                 <img src="{{ asset('img/underground-siyah.png') }}" alt="Logo" style="width: 45px; height: 45px; border-radius: 8px; margin-right: 8px;">
                 <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
-                    <h1 style="font-size: 20px; margin: 0; letter-spacing: 0.3px;">{{ $cafe->name }}</h1>
+                    <h1 style="font-size: 20px; margin: 0; letter-spacing: 0.3px;">Copper</h1>
                     <div style="font-size: 11px; color: #666; margin: 2px 0 0 1px; font-style: italic; font-weight: 500;">COFFEE SHOP</div>
                 </div>
             </div>
