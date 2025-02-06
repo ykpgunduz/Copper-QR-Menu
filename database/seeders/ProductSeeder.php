@@ -528,7 +528,7 @@ class ProductSeeder extends Seeder
                 'category' => 'Tatlılar'
             ],
             [
-                'thumbnail' => 'damla-sakizli-muhallebi.png',
+                'thumbnail' => 'damla-sakizli-muhallebi.jpg',
                 'title' => 'Damla Sakızlı Muhallebi',
                 'price' => 85.00,
                 'category' => 'Tatlılar'
