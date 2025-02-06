@@ -26,11 +26,6 @@ class CategorySeeder extends Seeder
                 'color' => '#B40000',
             ],
             [
-                'name' => 'Tuzlular',
-                'icon' => 'fa-solid fa-cookie-bite',
-                'color' => '#A35200',
-            ],
-            [
                 'name' => 'Yöremizden Gelenler',
                 'icon' => 'fa-solid fa-mug-saucer',
                 'color' => '#005AC8',

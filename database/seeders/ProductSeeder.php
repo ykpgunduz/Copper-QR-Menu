@@ -12,499 +12,529 @@ class ProductSeeder extends Seeder
     {
         $products = [
             [
-                'thumbnail' => 'espresso-con-panna.webp',
+                'thumbnail' => 'espresso-con-panna.jpg',
                 'title' => 'Espresso Con Panna',
                 'price' => 115.00,
                 'category' => 'Espresso Kahveler'
             ],
             [
-                'thumbnail' => 'espresso-ristretto.webp',
+                'thumbnail' => 'ristretto.jpg',
                 'title' => 'Espresso Ristretto',
                 'price' => 90.00,
                 'category' => 'Espresso Kahveler'
             ],
             [
-                'thumbnail' => 'espresso-single.webp',
+                'thumbnail' => 'espresso.jpg',
                 'title' => 'Single Espresso',
                 'price' => 90.00,
                 'category' => 'Espresso Kahveler'
             ],
             [
-                'thumbnail' => 'espresso-doppio.webp',
+                'thumbnail' => 'double-espresso.jpg',
                 'title' => 'Double Espresso',
                 'price' => 110.00,
                 'category' => 'Espresso Kahveler'
             ],
             [
-                'thumbnail' => 'espresso-lungo.webp',
+                'thumbnail' => 'lungo-espresso.jpg',
                 'title' => 'Espresso Lungo',
                 'price' => 100.00,
                 'category' => 'Espresso Kahveler'
             ],
             [
-                'thumbnail' => 'espresso-macchiato.webp',
+                'thumbnail' => 'espresso-macchiato.jpg',
                 'title' => 'Espresso Macchiato',
                 'price' => 110.00,
                 'category' => 'Espresso Kahveler'
             ],
             [
-                'thumbnail' => 'americano.webp',
+                'thumbnail' => 'americano.jpg',
                 'title' => 'Americano',
                 'price' => 115.00,
                 'category' => 'Espresso Kahveler'
             ],
             [
-                'thumbnail' => 'mocha.webp',
+                'thumbnail' => 'mocha.jpg',
                 'title' => 'Mocha',
                 'price' => 160.00,
                 'category' => 'Espresso Kahveler'
             ],
             [
-                'thumbnail' => 'filtre-kahve.webp',
+                'thumbnail' => 'filtre-kahve.jpg',
                 'title' => 'Filtre Kahve',
                 'price' => 120.00,
                 'category' => 'Espresso Kahveler'
             ],
             [
-                'thumbnail' => 'mocha-cesitleri.webp',
+                'thumbnail' => 'white-mocha.jpg',
                 'title' => 'White Mocha',
                 'price' => 160.00,
                 'category' => 'Espresso Kahveler'
             ],
             [
-                'thumbnail' => 'cappucino.webp',
+                'thumbnail' => 'cappuccino.jpg',
                 'title' => 'Cappucino',
                 'price' => 135.00,
                 'category' => 'Espresso Kahveler'
             ],
             [
-                'thumbnail' => 'cortado.webp',
+                'thumbnail' => 'cortado.jpg',
                 'title' => 'Cortado',
                 'price' => 145.00,
                 'category' => 'Espresso Kahveler'
             ],
             [
-                'thumbnail' => 'flat-white.webp',
+                'thumbnail' => 'flate-white.jpg',
                 'title' => 'Flat White',
                 'price' => 145.00,
                 'category' => 'Espresso Kahveler'
             ],
             [
-                'thumbnail' => 'latte-macchiato.webp',
-                'title' => 'Latte Macchiato',
-                'price' => 150.00,
-                'category' => 'Espresso Kahveler'
-            ],
-            [
-                'thumbnail' => 'cafe-latte.webp',
+                'thumbnail' => 'cafe-latte.jpg',
                 'title' => 'Cafe Latte',
                 'price' => 135.00,
                 'category' => 'Espresso Kahveler'
             ],
             [
-                'thumbnail' => 'latte-cesitleri.webp',
+                'thumbnail' => 'caramel-latte.jpg',
                 'title' => 'Caramel Latte',
                 'price' => 160.00,
                 'category' => 'Espresso Kahveler'
             ],
             [
-                'thumbnail' => 'latte-cesitleri.webp',
+                'thumbnail' => 'hazelnut-latte.jpg',
                 'title' => 'Hazelnut Latte',
                 'price' => 160.00,
                 'category' => 'Espresso Kahveler'
             ],
             [
-                'thumbnail' => 'latte-cesitleri.webp',
+                'thumbnail' => 'extra-shot-espresso.jpg',
                 'title' => 'Extra Shot Espresso',
                 'price' => 45.00,
                 'category' => 'Espresso Kahveler'
             ],
             [
-                'thumbnail' => 'latte-cesitleri.webp',
+                'thumbnail' => 'badem-yulaf-sutu.jpg',
                 'title' => 'Yulaf & Badem Sütü',
                 'price' => 25.00,
                 'category' => 'Espresso Kahveler'
             ],
             [
-                'thumbnail' => 'ice-americano.webp',
+                'thumbnail' => 'ice-americano.jpg',
                 'title' => 'Ice Americano',
                 'price' => 140.00,
                 'category' => 'Soğuk Kahveler'
             ],
             [
-                'thumbnail' => 'ice-filter.webp',
-                'title' => 'Ice Filter',
-                'price' => 140.00,
-                'category' => 'Soğuk Kahveler'
-            ],
-            [
-                'thumbnail' => 'ice-latte.webp',
+                'thumbnail' => 'ice-latte.jpg',
                 'title' => 'Ice Latte',
                 'price' => 160.00,
                 'category' => 'Soğuk Kahveler'
             ],
             [
-                'thumbnail' => 'aromali-ice-latte.webp',
+                'thumbnail' => 'ice-caramel-latte.jpg',
                 'title' => 'Ice Caramel Latte',
                 'price' => 175.00,
                 'category' => 'Soğuk Kahveler'
             ],
             [
-                'thumbnail' => 'aromali-ice-latte.webp',
+                'thumbnail' => 'ice-hazelnut-latte.jpg',
                 'title' => 'Ice Hazelnut Latte',
                 'price' => 175.00,
                 'category' => 'Soğuk Kahveler'
             ],
             [
-                'thumbnail' => 'aromali-ice-latte.webp',
+                'thumbnail' => 'ice-caramel-macchiato.jpg',
                 'title' => 'Ice Caramel Macchiato',
                 'price' => 175.00,
                 'category' => 'Soğuk Kahveler'
             ],
             [
-                'thumbnail' => 'aromali-ice-latte.webp',
+                'thumbnail' => 'ice-mocha.jpg',
                 'title' => 'Ice Mocha',
                 'price' => 175.00,
                 'category' => 'Soğuk Kahveler'
             ],
             [
-                'thumbnail' => 'aromali-ice-latte.webp',
+                'thumbnail' => 'ice-white-mocha.jpg',
                 'title' => 'Ice White Mocha',
                 'price' => 175.00,
                 'category' => 'Soğuk Kahveler'
             ],
             [
-                'thumbnail' => 'aromali-ice-latte.webp',
+                'thumbnail' => 'caramelli-frappucino.jpg',
                 'title' => 'Caramel Frabuccino',
                 'price' => 175.00,
                 'category' => 'Soğuk Kahveler'
             ],
             [
-                'thumbnail' => 'aromali-ice-latte.webp',
+                'thumbnail' => 'vanilla-frappucino.jpg',
                 'title' => 'Vanilia Frabuccino',
                 'price' => 175.00,
                 'category' => 'Soğuk Kahveler'
             ],
             [
-                'thumbnail' => 'aromali-ice-latte.webp',
+                'thumbnail' => 'frambuazli-frappucino.jpg',
                 'title' => 'Framboazlı Frabuccino',
                 'price' => 175.00,
                 'category' => 'Soğuk Kahveler'
             ],
-             [
-                'thumbnail' => 'aromali-ice-latte.webp',
+            [
+                'thumbnail' => 'double-ice-espresso.jpg',
                 'title' => 'Double İce Shaked Espresso',
                 'price' => 175.00,
                 'category' => 'Soğuk Kahveler'
             ],
             [
-                'thumbnail' => 'sicak-cikolata.webp',
+                'thumbnail' => 'sicak-cikolata.jpg',
                 'title' => 'Sıcak Çikolata',
                 'price' => 175.00,
                 'category' => 'Yöremizden Gelenler'
             ],
             [
-                'thumbnail' => 'salep.webp',
+                'thumbnail' => 'salep.jpg',
                 'title' => 'Salep',
                 'price' => 160.00,
                 'category' => 'Yöremizden Gelenler'
             ],
             [
-                'thumbnail' => 'salep.webp',
+                'thumbnail' => 'findik-parcacikli-salep.jpg',
                 'title' => 'Fındık Parçacıklı Salep',
                 'price' => 155.00,
                 'category' => 'Yöremizden Gelenler'
             ],
             [
-                'thumbnail' => 'salep.webp',
+                'thumbnail' => 'cilekli-salep.jpg',
                 'title' => 'Çilekli Salep',
                 'price' => 155.00,
                 'category' => 'Yöremizden Gelenler'
             ],
             [
-                'thumbnail' => 'turk-kahvesi.webp',
+                'thumbnail' => 'turk-kahvesi.jpg',
                 'title' => 'Türk Kahvesi',
                 'price' => 100.00,
                 'category' => 'Yöremizden Gelenler'
             ],
             [
-                'thumbnail' => 'double-turk-kahvesi.webp',
+                'thumbnail' => 'double-turk-kahvesi.jpg',
                 'title' => 'Double Türk Kahvesi',
                 'price' => 150.00,
                 'category' => 'Yöremizden Gelenler'
             ],
             [
-                'thumbnail' => 'menengiç-kahvesi.webp',
+                'thumbnail' => 'menengic-kahvesi.jpg',
                 'title' => 'Menengiç Kahvesi',
                 'price' => 110.00,
                 'category' => 'Yöremizden Gelenler'
             ],
             [
-                'thumbnail' => 'double-menengiç-kahvesi.webp',
+                'thumbnail' => 'menengic-kahvesi.jpg',
                 'title' => 'Double Menengiç Kahvesi',
                 'price' => 160.00,
                 'category' => 'Yöremizden Gelenler'
             ],
             [
-                'thumbnail' => 'menengiç-kahvesi.webp',
+                'thumbnail' => 'dibek-kahvesi.jpg',
                 'title' => 'Dibek Kahvesi',
                 'price' => 110.00,
                 'category' => 'Yöremizden Gelenler'
             ],
             [
-                'thumbnail' => 'double-menengiç-kahvesi.webp',
+                'thumbnail' => 'dibek-kahvesi.jpg',
                 'title' => 'Double Dibek Kahvesi',
                 'price' => 160.00,
                 'category' => 'Yöremizden Gelenler'
             ],
             [
-                'thumbnail' => 'organic-cay.webp',
+                'thumbnail' => 'ihlamur.jpg',
                 'title' => 'Ihlamur',
                 'price' => 115.00,
                 'category' => 'Yöremizden Gelenler'
             ],
             [
-                'thumbnail' => 'organic-cay.webp',
+                'thumbnail' => 'ada-cayi.jpg',
                 'title' => 'Ada Çayı',
                 'price' => 115.00,
                 'category' => 'Yöremizden Gelenler'
             ],
             [
-                'thumbnail' => 'organic-cay.webp',
+                'thumbnail' => 'yesil-cay.jpg',
                 'title' => 'Yeşil Çay',
                 'price' => 115.00,
                 'category' => 'Yöremizden Gelenler'
             ],
             [
-                'thumbnail' => 'organic-cay.webp',
+                'thumbnail' => 'papatya-cayi.jpg',
                 'title' => 'Papatya Çayı',
                 'price' => 115.00,
                 'category' => 'Yöremizden Gelenler'
             ],
             [
-                'thumbnail' => 'organic-cay.webp',
+                'thumbnail' => 'kis-cayi.jpg',
+                'title' => 'Kış Çayı',
+                'price' => 115.00,
+                'category' => 'Yöremizden Gelenler'
+            ],
+            [
+                'thumbnail' => 'melisa-cayi.jpg',
                 'title' => 'Melisa Çayı',
                 'price' => 115.00,
                 'category' => 'Yöremizden Gelenler'
             ],
             [
-                'thumbnail' => 'organic-cay.webp',
+                'thumbnail' => 'copper-natural-tea.jpg',
                 'title' => 'Copper Natural Tea',
-                'price' => 115.00,
+                'price' => 175.00,
                 'category' => 'Yöremizden Gelenler'
             ],
             [
-                'thumbnail' => 'organic-cay.webp',
+                'thumbnail' => 'hibiskus.jpg',
                 'title' => 'Hibisküs Çayı',
                 'price' => 115.00,
                 'category' => 'Yöremizden Gelenler'
             ],
             [
-                'thumbnail' => 'fincan-cay.webp',
+                'thumbnail' => 'çay.jpg',
                 'title' => 'Çay',
-                'price' => 60.00,
+                'price' => 45.00,
                 'category' => 'Yöremizden Gelenler'
             ],
             [
-                'thumbnail' => 'fincan-cay.webp',
+                'thumbnail' => 'fincan-cay.jpg',
                 'title' => 'Fincan Çay',
                 'price' => 60.00,
                 'category' => 'Yöremizden Gelenler'
             ],
             [
-                'thumbnail' => 'take-away-cay.webp',
-                'title' => 'Take Away Çay',
-                'price' => 80.00,
-                'category' => 'Yöremizden Gelenler'
-            ],
-            [
-                'thumbnail' => 'milkshake.webp',
+                'thumbnail' => 'cilekli-milkshake.jpg',
                 'title' => 'Çilekli Milkshake',
                 'price' => 160.00,
                 'category' => 'Milkshakes'
             ],
             [
-                'thumbnail' => 'milkshake.webp',
+                'thumbnail' => 'muzlu-milkshake.jpg',
                 'title' => 'Muzlu Milkshake',
                 'price' => 155.00,
                 'category' => 'Milkshakes'
             ],
             [
-                'thumbnail' => 'milkshake.webp',
+                'thumbnail' => 'cikolatali-milkshake.jpg',
                 'title' => 'Çikolatalı Milkshake',
                 'price' => 165.00,
                 'category' => 'Milkshakes'
             ],
             [
-                'thumbnail' => 'milkshake.webp',
+                'thumbnail' => 'vanilia-milkshake.jpg',
                 'title' => 'Vanilyalı Milkshake',
                 'price' => 165.00,
                 'category' => 'Milkshakes'
             ],
             [
-                'thumbnail' => 'milkshake.webp',
+                'thumbnail' => 'caramelli-milkshake.jpg',
                 'title' => 'Caramel Milkshake',
                 'price' => 165.00,
                 'category' => 'Milkshakes'
             ],
             [
-                'thumbnail' => 'milkshake.webp',
+                'thumbnail' => 'atom-milkshake.jpg',
                 'title' => 'Atom Milkshake',
                 'price' => 185.00,
                 'category' => 'Milkshakes'
             ],
             [
-                'thumbnail' => 'milkshake.webp',
+                'thumbnail' => 'oreo-milkshake.jpg',
                 'title' => 'Oreo Milkshake',
                 'price' => 175.00,
                 'category' => 'Milkshakes'
             ],
             [
-                'thumbnail' => 'frozen.webp',
+                'thumbnail' => 'cilekli-frozen.jpg',
                 'title' => 'Çilekli Frozen',
                 'price' => 180.00,
                 'category' => 'Frozens'
             ],
             [
-                'thumbnail' => 'frozen.webp',
+                'thumbnail' => 'limonlu-frozen.jpg',
                 'title' => 'Limonlu Frozen',
                 'price' => 180.00,
                 'category' => 'Frozens'
             ],
             [
-                'thumbnail' => 'frozen.webp',
+                'thumbnail' => 'mangolu-frozen.jpg',
                 'title' => 'Mango Frozen',
                 'price' => 180.00,
                 'category' => 'Frozens'
             ],
             [
-                'thumbnail' => 'frozen.webp',
+                'thumbnail' => 'yesil-elmali-frozen.jpg',
                 'title' => 'Yeşil Elma Frozen',
                 'price' => 180.00,
                 'category' => 'Frozens'
             ],
             [
-                'thumbnail' => 'frozen.webp',
+                'thumbnail' => 'orman-meyveli-frozen.jpg',
                 'title' => 'Kırmızı Orman Meyveli Frozen',
                 'price' => 180.00,
                 'category' => 'Frozens'
             ],
             [
-                'thumbnail' => 'milkshake.webp',
+                'thumbnail' => 'mojito.jpg',
                 'title' => 'Mojito',
                 'price' => 170.00,
                 'category' => 'Mocktails'
             ],
             [
-                'thumbnail' => 'milkshake.webp',
+                'thumbnail' => 'cilekli-mojito.jpg',
                 'title' => 'Çilekli Mojito',
                 'price' => 180.00,
                 'category' => 'Mocktails'
             ],
             [
-                'thumbnail' => 'milkshake.webp',
+                'thumbnail' => 'redbull-mojito.jpg',
                 'title' => 'Redbull Mojito',
                 'price' => 180.00,
                 'category' => 'Mocktails'
             ],
             [
-                'thumbnail' => 'limonata.webp',
+                'thumbnail' => 'strawberry-sunrise.jpg',
                 'title' => 'Strawberry Sunrice',
                 'price' => 170.00,
                 'category' => 'Mocktails'
             ],
             [
-                'thumbnail' => 'milkshake.webp',
+                'thumbnail' => 'aloha.jpg',
                 'title' => 'Aloha',
                 'price' => 170.00,
                 'category' => 'Mocktails'
             ],
             [
-                'thumbnail' => 'portakal.webp',
+                'thumbnail' => 'portakal-suyu.jpg',
                 'title' => 'Portakal Suyu',
                 'price' => 150.00,
                 'category' => 'Mocktails'
             ],
             [
-                'thumbnail' => 'coca-cola.png',
+                'thumbnail' => 'coca-cola.webp',
                 'title' => 'Coca Cola',
+                'price' => 80.00,
+                'category' => 'Meşrubatlar'
+            ],
+            [
+                'thumbnail' => 'fanta.webp',
+                'title' => 'Fanta',
+                'price' => 80.00,
+                'category' => 'Meşrubatlar'
+            ],
+            [
+                'thumbnail' => 'sprite.webp',
+                'title' => 'Sprite',
+                'price' => 80.00,
+                'category' => 'Meşrubatlar'
+            ],
+            [
+                'thumbnail' => 'limonlu-soda.jpg',
+                'title' => 'Limonlu Soda',
+                'price' => 70.00,
+                'category' => 'Meşrubatlar'
+            ],
+            [
+                'thumbnail' => 'elmali-soda.jpg',
+                'title' => 'Elmalı Soda',
+                'price' => 70.00,
+                'category' => 'Meşrubatlar'
+            ],
+            [
+                'thumbnail' => 'ice-tea-seftali.webp',
+                'title' => 'İce Tea Seftali',
+                'price' => 70.00,
+                'category' => 'Meşrubatlar'
+            ],
+            [
+                'thumbnail' => 'ice-tea-limon.jpg',
+                'title' => 'İce Tea Limon',
+                'price' => 70.00,
+                'category' => 'Meşrubatlar'
+            ],
+            [
+                'thumbnail' => 'fusetea-mango.jpg',
+                'title' => 'Fusetea Mango',
+                'price' => 70.00,
+                'category' => 'Meşrubatlar'
+            ],
+            [
+                'thumbnail' => 'redbull.webp',
+                'title' => 'Redbull',
                 'price' => 90.00,
                 'category' => 'Meşrubatlar'
             ],
             [
-                'thumbnail' => 'cola-zero.webp',
-                'title' => 'Coca Cola Zero',
-                'price' => 90.00,
-                'category' => 'Meşrubatlar'
-            ],
-            [
-                'thumbnail' => 'su.webp',
+                'thumbnail' => 'su.jpg',
                 'title' => 'Su',
-                'price' => 40.00,
+                'price' => 30.00,
                 'category' => 'Meşrubatlar'
             ],
             [
-                'thumbnail' => 'maden-suyu.webp',
+                'thumbnail' => 'maden-suyu.jpg',
                 'title' => 'Maden Suyu',
-                'price' => 75.00,
+                'price' => 50.00,
                 'category' => 'Meşrubatlar'
             ],
             [
-                'thumbnail' => 'churchil.webp',
+                'thumbnail' => 'churchill.jpg',
                 'title' => 'Churchill',
-                'price' => 100.00,
+                'price' => 60.00,
                 'category' => 'Meşrubatlar'
             ],
             [
-                'thumbnail' => 'san-sebastian.webp',
+                'thumbnail' => 'san-sebastian.jpg',
                 'title' => 'San Sebastian',
                 'price' => 180.00,
                 'category' => 'Tatlılar'
             ],
             [
-                'thumbnail' => 'magnolya-meyveli.webp',
+                'thumbnail' => 'magnolya.jpg',
                 'title' => 'Magnolya',
                 'price' => 85.00,
                 'category' => 'Tatlılar'
             ],
             [
-                'thumbnail' => 'brownie.webp',
+                'thumbnail' => 'brownie.jpg',
                 'title' => 'Brownie',
                 'price' => 160.00,
                 'category' => 'Tatlılar'
             ],
             [
-                'thumbnail' => 'lotus-cheesecake.webp',
+                'thumbnail' => 'lotus-cheesecake.jpg',
                 'title' => 'Lotus Cheesecake',
                 'price' => 195.00,
                 'category' => 'Tatlılar'
             ],
             [
-                'thumbnail' => 'frambuazli-cheesecake.webp',
+                'thumbnail' => 'frambuazlı-chessecake.jpg',
                 'title' => 'Frambuazlı Cheesecake',
                 'price' => 140.00,
                 'category' => 'Tatlılar'
             ],
             [
-                'thumbnail' => 'tralice.webp',
-                'title' => 'Tralice',
+                'thumbnail' => 'trilece.avif',
+                'title' => 'Trileçe',
                 'price' => 75.00,
                 'category' => 'Tatlılar'
             ],
             [
-                'thumbnail' => 'cookie.webp',
+                'thumbnail' => 'cookie.jpg',
                 'title' => 'Cookie',
                 'price' => 60.00,
                 'category' => 'Tatlılar'
             ],
             [
-                'thumbnail' => 'damla-sakizli-muhallebi.webp',
+                'thumbnail' => 'damla-sakizli-muhallebi.png',
                 'title' => 'Damla Sakızlı Muhallebi',
                 'price' => 85.00,
                 'category' => 'Tatlılar'
             ],
             [
-                'thumbnail' => 'dubai-tatlisi.webp',
+                'thumbnail' => 'dubai-tatlisi.jpg',
                 'title' => 'Dubai Tatlısı',
                 'price' => 240.00,
                 'category' => 'Tatlılar'
