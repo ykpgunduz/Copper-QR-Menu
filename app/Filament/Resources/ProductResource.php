@@ -40,7 +40,8 @@ class ProductResource extends Resource
                 ->required(),
             Forms\Components\FileUpload::make('thumbnail')
                 ->label('Ürün Fotoğrafı')
-                ->directory('img'),
+                ->directory('img')
+                ->disk('public'),
             Forms\Components\Textarea::make('body')
                 ->label('Ürün Açıklaması')
                 ->required()
@@ -66,6 +67,8 @@ class ProductResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('thumbnail')
                     ->label('Fotoğraf')
+                    ->disk('public')
+                    ->directory('img')
                     ->defaultImageUrl(url: asset('img/kafe-logo.png')),
                 Tables\Columns\TextColumn::make('title')
                     ->label('Ürün Adı')
