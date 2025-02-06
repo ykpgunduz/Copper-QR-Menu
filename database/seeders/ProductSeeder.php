@@ -456,35 +456,59 @@ class ProductSeeder extends Seeder
                 'category' => 'Meşrubatlar'
             ],
             [
-                'thumbnail' => 'limonlu.png',
-                'title' => 'Limonlu Cheesecake',
-                'price' => 135.00,
+                'thumbnail' => 'san-sebastian.webp',
+                'title' => 'San Sebastian',
+                'price' => 180.00,
                 'category' => 'Tatlılar'
             ],
             [
-                'thumbnail' => 'frambuazli.jpg',
-                'title' => 'Frambuazlı Cheesecake',
-                'price' => 135.00,
+                'thumbnail' => 'magnolya-meyveli.webp',
+                'title' => 'Magnolya',
+                'price' => 85.00,
                 'category' => 'Tatlılar'
             ],
             [
-                'thumbnail' => 'antep-fistikli-cikolatali-pasta.webp',
-                'title' => 'Antep Fıstıklı Çikolatalı Pasta',
-                'price' => 155.00,
-                'category' => 'Tatlılar'
-            ],
-            [
-                'thumbnail' => 'browni.webp',
-                'title' => 'Brovnie Küp Kek',
-                'price' => 120.00,
-                'category' => 'Tatlılar'
-            ],
-            [
-                'thumbnail' => 'cikolatali-tatli.webp',
-                'title' => 'Çikolatalı Tatlı',
+                'thumbnail' => 'brownie.webp',
+                'title' => 'Brownie',
                 'price' => 160.00,
                 'category' => 'Tatlılar'
             ],
+            [
+                'thumbnail' => 'lotus-cheesecake.webp',
+                'title' => 'Lotus Cheesecake',
+                'price' => 195.00,
+                'category' => 'Tatlılar'
+            ],
+            [
+                'thumbnail' => 'frambuazli-cheesecake.webp',
+                'title' => 'Frambuazlı Cheesecake',
+                'price' => 140.00,
+                'category' => 'Tatlılar'
+            ],
+            [
+                'thumbnail' => 'tralice.webp',
+                'title' => 'Tralice',
+                'price' => 75.00,
+                'category' => 'Tatlılar'
+            ],
+            [
+                'thumbnail' => 'cookie.webp',
+                'title' => 'Cookie',
+                'price' => 60.00,
+                'category' => 'Tatlılar'
+            ],
+            [
+                'thumbnail' => 'damla-sakizli-muhallebi.webp',
+                'title' => 'Damla Sakızlı Muhallebi',
+                'price' => 85.00,
+                'category' => 'Tatlılar'
+            ],
+            [
+                'thumbnail' => 'dubai-tatlisi.webp',
+                'title' => 'Dubai Tatlısı',
+                'price' => 240.00,
+                'category' => 'Tatlılar'
+            ]
         ];
 
         foreach ($products as $product) {
