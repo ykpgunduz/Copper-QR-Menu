@@ -68,7 +68,6 @@ class ProductResource extends Resource
                 Tables\Columns\ImageColumn::make('thumbnail')
                     ->label('Fotoğraf')
                     ->disk('public')
-                    ->directory('img')
                     ->defaultImageUrl(url: asset('img/kafe-logo.png')),
                 Tables\Columns\TextColumn::make('title')
                     ->label('Ürün Adı')
