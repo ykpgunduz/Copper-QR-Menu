@@ -504,7 +504,7 @@ class ProductSeeder extends Seeder
                 'category' => 'Tatlılar'
             ],
             [
-                'thumbnail' => 'lotus-cheesecake.jpg',
+                'thumbnail' => 'lotus-cheescake.jpg',
                 'title' => 'Lotus Cheesecake',
                 'price' => 195.00,
                 'category' => 'Tatlılar'
