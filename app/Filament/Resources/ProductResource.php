@@ -44,7 +44,6 @@ class ProductResource extends Resource
                 ->disk('public'),
             Forms\Components\Textarea::make('body')
                 ->label('Ürün Açıklaması')
-                ->required()
                 ->columnSpanFull(),
             Forms\Components\Toggle::make('active')
                 ->label('Ürünün Menüde Görünümü')
