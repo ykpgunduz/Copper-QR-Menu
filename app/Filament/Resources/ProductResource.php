@@ -38,10 +38,18 @@ class ProductResource extends Resource
                 ->label('Ürün Kategorisi')
                 ->relationship('category', 'name')
                 ->required(),
-            Forms\Components\FileUpload::make('thumbnail')
+            Forms\Components\Select::make('thumbnail')
                 ->label('Ürün Fotoğrafı')
-                ->directory('img')
-                ->disk('public'),
+                ->options(function() {
+                    $files = \Illuminate\Support\Facades\Storage::disk('public')->files('img');
+                    $options = [];
+                    foreach($files as $file) {
+                        $filename = basename($file);
+                        $options[$filename] = $filename;
+                    }
+                    return $options;
+                })
+                ->searchable(),
             Forms\Components\Textarea::make('body')
                 ->label('Ürün Açıklaması')
                 ->columnSpanFull(),
@@ -53,7 +61,6 @@ class ProductResource extends Resource
                 ->required(),
             Forms\Components\Toggle::make('star')
                 ->label('Yıldızlı Ürün')
-                ->default('off')
                 ->onColor('warning')
                 ->offColor('gray')
                 ->required(),
