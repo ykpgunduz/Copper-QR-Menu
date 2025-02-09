@@ -8,7 +8,7 @@
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-800">
     <div class="min-h-screen py-6">
         <div class="max-w-6xl mx-auto sm:px-6">
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
