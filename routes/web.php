@@ -7,6 +7,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\DessertController;
 
 Route::get('/', function () {return redirect('https://harpysocial.com');});
 
@@ -29,3 +30,5 @@ Route::get('/rating/{orderNumber}', [RatingController::class, 'screen'])->name('
 Route::post('rating/{orderNumber}', [RatingController::class, 'store'])->name('rating.store');
 Route::get('/product/{id}', [ProductController::class, 'getDetails'])->name('product.details');
 Route::get('/receipt/print/{calculation}', [ReceiptController::class, 'print'])->name('receipt.print');
+Route::get('/dessert', [DessertController::class, 'create'])->name('orders.create-by-weight');
+Route::post('/dessert', [DessertController::class, 'store'])->name('orders.store-by-weight');

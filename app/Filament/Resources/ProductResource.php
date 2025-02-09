@@ -103,6 +103,7 @@ class ProductResource extends Resource
                     ->suffix('₺')
                     ->sortable(),
             ])
+            ->defaultSort('active', 'asc')
             ->actions([Tables\Actions\EditAction::make()])
             ->bulkActions([
                 Tables\Actions\BulkAction::make('activate')
