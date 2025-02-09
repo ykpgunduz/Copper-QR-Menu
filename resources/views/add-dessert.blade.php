@@ -13,13 +13,10 @@
         <div class="max-w-6xl mx-auto sm:px-6">
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
                 <div class="p-6">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Kiloluk Tatlı Siparişi</h2>
-
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Sol Taraf: Ürün Seçimi -->
                         <div>
                             <div class="mb-6">
-                                <h3 class="text-lg font-semibold mb-4">Tatlı Listesi</h3>
+                                <h3 class="text-lg font-semibold mb-4">Kiloluk Tatlı Listesi</h3>
                                 <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                                     @foreach($products as $product)
                                         @if($product->active)
@@ -129,6 +126,14 @@
         // Ürün seçimi
         document.querySelectorAll('.product-item').forEach(item => {
             item.addEventListener('click', function() {
+                // Önceki seçili ürünün vurgusunu kaldır
+                document.querySelectorAll('.product-item').forEach(p => {
+                    p.classList.remove('ring-2', 'ring-green-500');
+                });
+
+                // Yeni seçilen ürünü vurgula
+                this.classList.add('ring-2', 'ring-green-500');
+
                 selectedProduct = {
                     id: this.dataset.id,
                     name: this.dataset.name,
@@ -136,7 +141,7 @@
                 };
                 document.getElementById('selectedProduct').innerHTML = `
                     <div class="font-medium">${selectedProduct.name}</div>
-                    <div class="text-green-600">${selectedProduct.price} TL/kg</div>
+                    <div class="text-green-600">${selectedProduct.price}₺</div>
                 `;
             });
         });
