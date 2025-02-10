@@ -223,42 +223,28 @@
 
                     if (adetText && adetText !== '0') {
                         const urunAdi = $(this).find('.card-title').text();
+                        const urunFiyat = parseFloat($(this).data('urun-fiyat'));
+                        const adet = parseInt(adetText);
 
-                        if ($(this).hasClass('kiloluk-urun')) {
-                            // Kiloluk ürünler için özel görüntüleme
-                            const gram = parseInt(adetText);
-                            const fiyat = parseFloat($(this).data('hesaplanan-fiyat'));
-                            ozet += `<div class="d-flex justify-content-between align-items-center mb-2">
-                                <div class="d-flex align-items-center">
-                                    <button class="btn btn-sm btn-outline-danger me-2 azalt-btn" data-urun-id="${$(this).data('urun-id')}">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <span class="fw-bold">${urunAdi}</span>
-                                    <span class="text-muted ms-2">${gram}g</span>
-                                </div>
-                                <div class="text-end">
-                                    <div>${fiyat}₺</div>
-                                </div>
-                            </div>`;
-                            toplam += parseFloat(fiyat);
-                        } else {
-                            // Normal ürünler için mevcut görüntüleme
-                            const adet = parseInt(adetText);
-                            const fiyat = $(this).data('urun-fiyat');
-                            ozet += `<div class="d-flex justify-content-between align-items-center mb-2">
-                                <div class="d-flex align-items-center">
-                                    <button class="btn btn-sm btn-outline-danger me-2 azalt-btn" data-urun-id="${$(this).data('urun-id')}">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <span class="fw-bold">${urunAdi}</span>
-                                    <span class="text-muted ms-2">x${adet}</span>
-                                </div>
-                                <div class="text-end">
-                                    <div>${(fiyat * adet).toFixed(2)}₺</div>
-                                </div>
-                            </div>`;
-                            toplam += fiyat * adet;
-                        }
+                        let satirToplam = 0;
+                        let satirHTML = '';
+
+                        satirToplam = urunFiyat * adet;
+                        satirHTML = `<div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-sm btn-outline-danger me-2 azalt-btn" data-urun-id="${$(this).data('urun-id')}">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <span class="fw-bold">${urunAdi}</span>
+                                <span class="text-muted ms-2">x${adet}</span>
+                            </div>
+                            <div class="text-end">
+                                <div>${satirToplam.toFixed(2)}₺</div>
+                            </div>
+                        </div>`;
+
+                        ozet += satirHTML;
+                        toplam += satirToplam;
                     }
                 });
 
