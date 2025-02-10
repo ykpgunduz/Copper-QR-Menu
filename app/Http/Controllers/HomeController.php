@@ -14,7 +14,7 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        $categories = Category::all();
+        $categories = Category::where('name', '!=', 'Kiloluk Tatlılar')->get();
         $products = Product::all();
         $cafe = Cafe::first();
         $tableNumber = $request->query('table');
