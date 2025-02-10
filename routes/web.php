@@ -5,9 +5,10 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RatingController;
-use App\Http\Controllers\ReceiptController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DessertController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReceiptController;
+use App\Http\Controllers\NewOrderController;
 
 Route::get('/', function () {return redirect('https://harpysocial.com');});
 
@@ -32,3 +33,6 @@ Route::get('/product/{id}', [ProductController::class, 'getDetails'])->name('pro
 Route::get('/receipt/print/{calculation}', [ReceiptController::class, 'print'])->name('receipt.print');
 Route::get('/dessert', [DessertController::class, 'create'])->name('orders.create-by-weight');
 Route::post('/dessert', [DessertController::class, 'store'])->name('orders.store-by-weight');
+Route::get('/add-order', [NewOrderController::class, 'index'])->name('order.index');
+Route::post('/add-order', [NewOrderController::class, 'store'])->name('order.store');
+Route::post('/siparis/kaydet', [NewOrderController::class, 'saveOrder'])->name('siparis.kaydet');
