@@ -10,14 +10,14 @@
 </head>
 <body class="bg-gray-800">
     <div class="min-h-screen py-6">
-        <div class="max-w-6xl mx-auto sm:px-6">
+        <div class="max-w-8xl mx-auto sm:px-6">
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
                 <div class="p-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <div class="mb-6">
                                 <h3 class="text-lg font-semibold mb-4">Kiloluk Tatlı Listesi</h3>
-                                <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                                     @foreach($products as $product)
                                         @if($product->active)
                                             <div class="p-3 border rounded-lg hover:bg-gray-50 cursor-pointer product-item"
