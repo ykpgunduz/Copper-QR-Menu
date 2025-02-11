@@ -57,12 +57,20 @@
                                 </div>
 
                                 <!-- 15-16-17 masaları -->
-                                <div class="d-flex justify-content-center">
-                                    @for ($i = 17; $i >= 15; $i--)
-                                        <button type="button" class="btn btn-outline-primary masa-button mx-1" data-masa-no="{{ $i }}">
-                                            Salon {{ $i }}
+                                <div class="d-flex justify-content-around" style="width: 75%;">
+                                    <div>
+                                        <button type="button" class="btn btn-outline-success masa-button" disabled>
+                                            TATLI & KASA
                                         </button>
-                                    @endfor
+                                    </div>
+
+                                    <div>
+                                        @for ($i = 17; $i >= 15; $i--)
+                                            <button type="button" class="btn btn-outline-primary masa-button mx-1" data-masa-no="{{ $i }}">
+                                                Salon {{ $i }}
+                                            </button>
+                                        @endfor
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -133,7 +141,7 @@
                             <!-- Seçilen ürünler burada listelenecek -->
                         </div>
                         <div class="mt-3">
-                            <h6>Toplam: <span id="toplamTutar">0.00</span> ₺</h6>
+                            <h6>Toplam: <span id="toplamTutar">0</span> ₺</h6>
                             <button class="btn btn-success w-100" id="siparisiOnayla">Siparişi Masaya Ekle</button>
                         </div>
                     </div>
@@ -239,7 +247,7 @@
                                 <span class="text-muted ms-2">x${adet}</span>
                             </div>
                             <div class="text-end">
-                                <div>${satirToplam.toFixed(2)}₺</div>
+                                <div>${Math.round(satirToplam)}₺</div>
                             </div>
                         </div>`;
 
@@ -249,7 +257,7 @@
                 });
 
                 $('#siparisOzeti').html(ozet);
-                $('#toplamTutar').text(toplam.toFixed(2));
+                $('#toplamTutar').text(Math.round(toplam));
 
                 // Eksiltme butonu işlevi
                 $('.azalt-btn').click(function(e) {
@@ -446,6 +454,8 @@
         background-color: var(--card-bg);
         border: 1px solid var(--border-color);
         transition: all 0.2s;
+        cursor: pointer;
+        user-select: none; /* Metin seçimini engeller */
     }
 
     .product-card:hover {
@@ -453,6 +463,20 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         border-color: var(--primary-color);
         background-color: var(--hover-bg);
+        position: relative;
+    }
+
+    .product-card:hover::after {
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2rem;
+        color: var(--primary-color);
+        opacity: 0.3;
+        pointer-events: none;
     }
 
     .product-card .card-title {
