@@ -14,14 +14,21 @@ class NewOrderController extends Controller
 {
     public function index()
     {
-        // Eager loading ile ilişkili verileri tek sorguda çekelim
         $products = Product::with('category')
             ->where('active', true)
             ->get();
 
         $categories = Category::select('id', 'name')->get();
 
-        return view('add-order', compact('products', 'categories'));
+        // Dolu masaları belirle
+        $doluMasalar = Calculation::where('status', 'Masa')
+            ->pluck('table_number')
+            ->mapWithKeys(function ($masaNo) {
+                return [$masaNo => true];
+            })
+            ->toArray();
+
+        return view('add-order', compact('products', 'categories', 'doluMasalar'));
     }
 
     public function saveOrder(Request $request)

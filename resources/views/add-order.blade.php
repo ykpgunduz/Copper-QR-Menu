@@ -28,7 +28,7 @@
                             <div class="col-3">
                                 <div class="d-flex flex-column col-md-6">
                                     @for ($i = 3; $i >= 1; $i--)
-                                        <button type="button" class="btn btn-outline-primary masa-button mb-2" data-masa-no="{{ $i }}">
+                                        <button type="button" class="btn btn-outline-primary masa-button mb-2 {{ isset($doluMasalar[$i]) ? 'masa-dolu' : '' }}" data-masa-no="{{ $i }}">
                                             Bahçe {{ $i }}
                                         </button>
                                     @endfor
@@ -38,7 +38,7 @@
                             <div class="col-9 p-0">
                                 <div class="d-flex justify-content-center mb-4">
                                     @for ($i = 4; $i <= 12; $i++)
-                                        <button type="button" class="btn btn-outline-primary masa-button mx-1" data-masa-no="{{ $i }}">
+                                        <button type="button" class="btn btn-outline-primary masa-button mx-1 {{ isset($doluMasalar[$i]) ? 'masa-dolu' : '' }}" data-masa-no="{{ $i }}">
                                             B-{{ $i }}
                                         </button>
                                     @endfor
@@ -584,6 +584,23 @@
 
     .card-body::-webkit-scrollbar-thumb:hover {
         background: var(--primary-color);
+    }
+
+    .masa-dolu {
+        border: 2px solid #dc3545 !important;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4);
+        }
+        70% {
+            box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+        }
     }
     </style>
 </body>
