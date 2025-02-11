@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="bg-dark">
-    <div class="container-fluid mx-5">
+    <div class="container-fluid">
         <div class="row pt-3">
             <div class="col-8 mb-4">
                 <div class="card">
