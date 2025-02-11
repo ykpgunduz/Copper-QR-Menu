@@ -16,19 +16,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="bg-dark">
-    <div class="container">
-        <div class="row">
-            <!-- Masa Seçim Bölümü -->
-            <div class="col-12 mb-4">
+    <div class="container-fluid mx-5">
+        <div class="row pt-3">
+            <div class="col-8 mb-4">
                 <div class="card">
                     <div class="card-header">
                         <h5>Masa Seçimi</h5>
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <!-- Sol taraftaki masalar (1-2-3) -->
-                            <div class="col-2">
-                                <div class="d-flex flex-column">
+                            <div class="col-3">
+                                <div class="d-flex flex-column col-md-6">
                                     @for ($i = 3; $i >= 1; $i--)
                                         <button type="button" class="btn btn-outline-primary masa-button mb-2" data-masa-no="{{ $i }}">
                                             Bahçe {{ $i }}
@@ -37,17 +35,15 @@
                                 </div>
                             </div>
 
-                            <!-- Üst sıradaki masalar (4-12) -->
-                            <div class="col-8">
+                            <div class="col-9 p-0">
                                 <div class="d-flex justify-content-center mb-4">
                                     @for ($i = 4; $i <= 12; $i++)
                                         <button type="button" class="btn btn-outline-primary masa-button mx-1" data-masa-no="{{ $i }}">
-                                            Bar {{ $i }}
+                                            B-{{ $i }}
                                         </button>
                                     @endfor
                                 </div>
 
-                                <!-- 13-14 masaları -->
                                 <div class="d-flex justify-content-center mb-4">
                                     @for ($i = 14; $i >= 13; $i--)
                                         <button type="button" class="btn btn-outline-primary masa-button mx-1" data-masa-no="{{ $i }}">
@@ -56,7 +52,6 @@
                                     @endfor
                                 </div>
 
-                                <!-- 15-16-17 masaları -->
                                 <div class="d-flex justify-content-around" style="width: 75%;">
                                     <div>
                                         <button type="button" class="btn btn-outline-success masa-button" disabled>
@@ -78,13 +73,28 @@
                 </div>
             </div>
 
+            <div class="col-4 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Sipariş Özeti</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="siparisOzeti">
+                        </div>
+                        <div class="mt-3">
+                            <h6>Toplam: <span id="toplamTutar">0</span> ₺</h6>
+                            <button class="btn btn-success w-100 py-2" id="siparisiOnayla">Siparişi Masaya Ekle</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Ürün Listesi -->
-            <div class="col-8">
+            <div class="col-12">
                 <div class="card">
                     <div class="card-header d-flex align-items-center justify-content-between">
                         <h5 class="mb-0">Ürünler</h5>
-                        <!-- Arama kutusu -->
-                        <div class="input-group input-group-sm" style="width: 200px;">
+                        <div class="input-group input-group-sm mb-2 mx-3" style="width: 300px;">
                             <span class="input-group-text">
                                 <i class="fas fa-search"></i>
                             </span>
@@ -92,7 +102,6 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <!-- Kategori Pills -->
                         <ul class="nav nav-pills flex-wrap gap-2 mb-3">
                             @foreach($categories as $category)
                                 <li class="nav-item">
@@ -107,7 +116,7 @@
                         <!-- Ürün Grid -->
                         <div class="row g-3" id="urunListesi">
                             @foreach($products->sortBy('title') as $product)
-                                <div class="col-md-4 urun-item" data-kategori="{{ $product->category_id }}" data-urun-adi="{{ strtolower($product->title) }}">
+                                <div class="col-md-2-4 urun-item" style="flex: 0 0 20%; max-width: 20%;" data-kategori="{{ $product->category_id }}" data-urun-adi="{{ strtolower($product->title) }}">
                                     <div class="card h-100 product-card"
                                          data-urun-id="{{ $product->id }}"
                                          data-urun-fiyat="{{ $product->price }}">
@@ -125,24 +134,6 @@
                                     </div>
                                 </div>
                             @endforeach
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sipariş Özeti -->
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Sipariş Özeti</h5>
-                    </div>
-                    <div class="card-body">
-                        <div id="siparisOzeti">
-                            <!-- Seçilen ürünler burada listelenecek -->
-                        </div>
-                        <div class="mt-3">
-                            <h6>Toplam: <span id="toplamTutar">0</span> ₺</h6>
-                            <button class="btn btn-success w-100" id="siparisiOnayla">Siparişi Masaya Ekle</button>
                         </div>
                     </div>
                 </div>
@@ -416,7 +407,7 @@
     .card-header {
         background-color: var(--hover-bg);
         border-bottom: 1px solid var(--border-color);
-        padding: 1rem;
+        padding: 0.5rem 0 0 1rem;
     }
 
     /* Masa butonları */
@@ -438,15 +429,21 @@
     .nav-pills .nav-link {
         color: var(--text-color);
         background-color: var(--hover-bg);
+        margin: 0.2rem;
+        border-radius: 20px;
+        transition: all 0.2s ease;
     }
 
     .nav-pills .nav-link:hover {
         background-color: rgba(59, 130, 246, 0.1);
+        transform: translateY(-1px);
     }
 
     .nav-pills .nav-link.active {
-        background-color: var(--primary-color);
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        background-color: #3b82f6; /* Mavi renk */
+        color: white;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        transform: translateY(-1px);
     }
 
     /* Ürün kartları */
