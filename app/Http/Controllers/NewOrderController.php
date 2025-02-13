@@ -6,9 +6,9 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Calculation;
 use App\Models\OrderItem;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\ValidationException;
+use Filament\Notifications\Notification;
 
 class NewOrderController extends Controller
 {
@@ -20,141 +20,71 @@ class NewOrderController extends Controller
 
         $categories = Category::select('id', 'name')->get();
 
-        // Dolu masaları belirle
-        $doluMasalar = Calculation::where('status', 'Masa')
-            ->pluck('table_number')
-            ->mapWithKeys(function ($masaNo) {
-                return [$masaNo => true];
+        $aktifMasalar = Calculation::where('status', 'Masa')
+            ->get(['table_number', 'total_amount'])
+            ->mapWithKeys(function ($masa) {
+                return [$masa->table_number => $masa->total_amount];
             })
             ->toArray();
 
-        return view('add-order', compact('products', 'categories', 'doluMasalar'));
+        return view('add-order', compact('products', 'categories', 'aktifMasalar'));
     }
 
-    public function saveOrder(Request $request)
-    {
-        try {
-            // İstek validasyonu ekleyelim
-            $this->validateOrder($request);
-
-            return DB::transaction(function () use ($request) {
-                $tableNumber = $request->masa_no;
-                $existingCalculation = $this->getExistingCalculation($tableNumber);
-
-                if ($existingCalculation) {
-                    $this->updateExistingOrder($request->urunler, $tableNumber);
-                    $message = 'Ürünler mevcut masaya eklendi!';
-                } else {
-                    $this->createNewOrder($request->urunler, $tableNumber);
-                    $message = 'Yeni masa açıldı ve siparişler eklendi!';
-                }
-
-                // Masa toplam tutarını güncelle
-                $this->updateTableTotal($tableNumber);
-
-                return response()->json([
-                    'success' => true,
-                    'message' => $message
-                ]);
-            });
-
-        } catch (ValidationException $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Validasyon hatası',
-                'errors' => $e->errors()
-            ], 422);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Bir hata oluştu: ' . $e->getMessage()
-            ], 500);
-        }
-    }
-
-    private function validateOrder(Request $request)
+    public function siparisEkle(Request $request)
     {
         $request->validate([
-            'masa_no' => 'required|integer|min:1',
-            'urunler' => 'required|array',
-            'urunler.*.urun_id' => 'required|exists:products,id',
-            'urunler.*.adet' => 'required|integer|min:1',
+            'masa_no' => 'required|integer',
+            'urunler' => 'required|array'
         ]);
-    }
 
-    private function getExistingCalculation($tableNumber)
-    {
-        return Calculation::where('table_number', $tableNumber)
-            ->where('status', 'Masa')
-            ->first();
-    }
+        $tableNumber = $request->masa_no;
+        $toplamTutar = 0;
 
-    private function updateExistingOrder(array $products, $tableNumber)
-    {
-        $productPrices = $this->getProductPrices(array_column($products, 'urun_id'));
+        // Mevcut siparişi kontrol et
+        $existingOrder = Calculation::where('table_number', $tableNumber)->first();
 
-        foreach ($products as $product) {
-            $price = $productPrices[$product['urun_id']] ?? 0;
-            $totalPrice = $price * $product['adet'];
-
-            OrderItem::updateOrCreate(
-                [
-                    'table_number' => $tableNumber,
-                    'product_id' => $product['urun_id'],
-                    'status' => 'Yeni Sipariş'
-                ],
-                [
-                    'quantity' => DB::raw("quantity + {$product['adet']}"),
-                    'price' => DB::raw("price + {$totalPrice}")
-                ]
-            );
+        foreach ($request->urunler as $urunId => $urun) {
+            if ($urun['adet'] > 0) {
+                $toplamTutar += $urun['adet'] * $urun['fiyat'];
+            }
         }
-    }
 
-    private function createNewOrder(array $products, $tableNumber)
-    {
-        $newOrderNumber = Calculation::max('order_number') + 1;
-
-        Calculation::create([
-            'table_number' => $tableNumber,
-            'status' => 'Masa',
-            'total_amount' => 0,
-            'order_number' => $newOrderNumber
-        ]);
-
-        $productPrices = $this->getProductPrices(array_column($products, 'urun_id'));
-
-        $orderItems = array_map(function ($product) use ($tableNumber, $productPrices) {
-            $price = $productPrices[$product['urun_id']] ?? 0;
-            return [
-                'product_id' => $product['urun_id'],
-                'quantity' => $product['adet'],
-                'price' => $price * $product['adet'],
+        // Sipariş kaydı oluştur veya güncelle
+        if ($existingOrder) {
+            $existingOrder->total_amount += $toplamTutar;
+            $existingOrder->status = 'Masa';
+            $existingOrder->save();
+            $orderId = $existingOrder->id;
+        } else {
+            $calculation = Calculation::create([
                 'table_number' => $tableNumber,
-                'status' => 'Yeni Sipariş',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ];
-        }, $products);
+                'total_amount' => $toplamTutar,
+                'status' => 'Masa',
+                'order_number' => 'ORD-' . strtoupper(uniqid()),
+            ]);
+            $orderId = $calculation->id;
+        }
 
-        OrderItem::insert($orderItems);
-    }
+        // Ürünleri OrderItem tablosuna kaydet
+        foreach ($request->urunler as $urunId => $urun) {
+            if ($urun['adet'] > 0) {
+                OrderItem::create([
+                    'table_number' => $tableNumber,
+                    'product_id' => $urunId,
+                    'quantity' => $urun['adet'],
+                    'price' => $urun['fiyat']
+                ]);
+            }
+        }
 
-    private function getProductPrices(array $productIds)
-    {
-        return Product::whereIn('id', $productIds)
-            ->pluck('price', 'id')
-            ->toArray();
-    }
+        // Bildirim gönder
+        $notification = $tableNumber . ". Masa Sipariş Verdi!";
+        Notification::make()
+            ->title($notification)
+            ->success()
+            ->duration(5000)
+            ->sendToDatabase(User::all());
 
-    private function updateTableTotal($tableNumber)
-    {
-        $total = OrderItem::where('table_number', $tableNumber)
-            ->where('status', 'Yeni Sipariş')
-            ->sum('price');
-
-        Calculation::where('table_number', $tableNumber)
-            ->where('status', 'Masa')
-            ->update(['total_amount' => $total]);
+        return redirect()->back()->with('success', 'Sipariş başarıyla eklendi');
     }
 }

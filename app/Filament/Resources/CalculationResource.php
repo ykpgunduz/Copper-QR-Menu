@@ -317,12 +317,12 @@ class CalculationResource extends Resource
                             ],
                             [
                                 'table_number' => $record->table_number,
-                                'session_id' => $record->session_id,
+                                'session_id' => $record->session_id ?? null,
                                 'total_amount' => DB::raw('IFNULL(total_amount, 0) + ' . $paymentAmount),
                                 'net_amount' => DB::raw('IFNULL(net_amount, 0) + (' . $paymentAmount . ' * 0.92)'),
                                 'ikram' => DB::raw('IFNULL(ikram, 0) + ' . $ikramAmount),
                                 'selfikram' => DB::raw('IFNULL(selfikram, 0) + ' . ($record->ikram ?? 0)),
-                                'device_info' => $record->device_info,
+                                'device_info' => $record->device_info ?? null,
                                 'note' => $record->note ?? '-',
                                 'customer' => $customerCount,
                                 'products' => $record->orderItems->map(function ($item) {

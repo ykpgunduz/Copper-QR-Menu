@@ -36,3 +36,4 @@ Route::post('/dessert', [DessertController::class, 'store'])->name('orders.store
 Route::get('/add-order', [NewOrderController::class, 'index'])->name('order.index');
 Route::post('/add-order', [NewOrderController::class, 'store'])->name('order.store');
 Route::post('/siparis/kaydet', [NewOrderController::class, 'saveOrder'])->name('siparis.kaydet');
+Route::post('/siparis/ekle', [NewOrderController::class, 'siparisEkle'])->name('siparis.ekle');
