@@ -16,8 +16,20 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <div class="mb-6">
-                                <h3 class="text-lg font-semibold mb-4">Kiloluk Tatlı Listesi</h3>
-                                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                <div class="pt-4">
+                                    <h3 class="text-lg font-semibold mb-4">Tatlı Seçip - Gramaj Giriniz</h3>
+                                    <div class="space-y-4">
+                                        <div id="selectedProduct" class="text-gray-900">Lütfen listeden bir ürün seçin</div>
+                                        <div class="flex gap-4">
+                                            <input type="number" id="weight" class="flex-1 rounded-md border-gray-300 shadow-sm p-2 border"
+                                                   placeholder="gram giriniz" step="1" style="border-color: green;">
+                                            <button id="addToCart" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700">
+                                                Ekle
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
                                     @foreach($products as $product)
                                         @if($product->active)
                                             <div class="p-3 border rounded-lg hover:bg-gray-50 cursor-pointer product-item"
@@ -31,20 +43,6 @@
                                             </div>
                                         @endif
                                     @endforeach
-                                </div>
-                            </div>
-
-                            <div class="border-t pt-4">
-                                <h3 class="text-lg font-semibold mb-4">Seçilen Ürün Detayı</h3>
-                                <div class="space-y-4">
-                                    <div id="selectedProduct" class="text-gray-500">Lütfen listeden bir ürün seçin</div>
-                                    <div class="flex gap-4">
-                                        <input type="number" id="weight" class="flex-1 rounded-md border-gray-300 shadow-sm p-2 border"
-                                               placeholder="Gramaj Giriniz" step="1">
-                                        <button id="addToCart" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700">
-                                            Ekle
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
