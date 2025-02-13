@@ -128,6 +128,11 @@ class PastOrderResource extends Resource
             ->paginated([60, 90, 120])
             ->actions([
                 Tables\Actions\ActionGroup::make([
+                    Tables\Actions\DeleteAction::make()
+                        ->label('Siparişi Sil')
+                        ->modalHeading('Geçmiş Siparişi Sil')
+                        ->modalButton('Siparişi Sil')
+                        ->requiresConfirmation(),
                     EditAction::make()
                         ->label('Siparişi Düzenle')
                         ->modalHeading('Geçmiş Siparişi Düzenle')
