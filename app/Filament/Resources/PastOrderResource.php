@@ -205,7 +205,6 @@ class PastOrderResource extends Resource
                                         ->required()
                                         ->suffix('₺')
                                         ->numeric()
-                                        ->disabled()
                                         ->afterStateUpdated(function ($state, callable $set) {
                                             $set('net_amount', floatval($state) * 0.92);
                                         }),
