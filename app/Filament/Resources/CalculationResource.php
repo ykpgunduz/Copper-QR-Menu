@@ -301,17 +301,46 @@ class CalculationResource extends Resource
                         $record->customer = $customerCount;
                         $record->save();
 
-                        DB::table('past_orders')->updateOrInsert(
-                            [
+                        // Ürün bilgilerini JSON formatında saklayalım
+                        $productsJson = json_encode($record->orderItems->map(function ($item) {
+                            $product = Product::find($item->product_id);
+                            return [
+                                'quantity' => $item->quantity,
+                                'title' => $product->title,
+                                'price' => $item->price,
+                                'total' => $item->quantity * $item->price
+                            ];
+                        })->toArray());
+
+                        // Past orders tablosuna kayıt
+                        $pastOrder = DB::table('past_orders')->where('order_number', $record->order_number)->first();
+
+                        if ($pastOrder) {
+                            // Mevcut kayıt varsa güncelle
+                            DB::table('past_orders')->where('order_number', $record->order_number)->update([
+                                'total_amount' => $pastOrder->total_amount + $paymentAmount,
+                                'net_amount' => $pastOrder->net_amount + ($paymentAmount * 0.92),
+                                'ikram' => $pastOrder->ikram + $ikramAmount,
+                                'selfikram' => $pastOrder->selfikram + ($record->ikram ?? 0),
+                                'customer' => $customerCount,
+                                'products' => $record->orderItems->map(function ($item) {
+                                    return $item->quantity . ' x ' . Product::find($item->product_id)->title . ' - ' . $item->price . '₺';
+                                })->implode(', '),
+                                'quantity' => $record->orderItems->sum('quantity'),
+                                'credit_card' => $paymentMethod === 'POS' ? $pastOrder->credit_card + $paymentAmount : $pastOrder->credit_card,
+                                'cash_money' => $paymentMethod === 'Nakit' ? $pastOrder->cash_money + $paymentAmount : $pastOrder->cash_money,
+                                'iban' => $paymentMethod === 'IBAN' ? $pastOrder->iban + $paymentAmount : $pastOrder->iban,
+                                'updated_at' => now(),
+                            ]);
+                        } else {
+                            DB::table('past_orders')->insert([
                                 'order_number' => $record->order_number,
-                            ],
-                            [
                                 'table_number' => $record->table_number,
                                 'session_id' => $record->session_id,
-                                'total_amount' => DB::raw('IFNULL(total_amount, 0) + ' . $paymentAmount),
-                                'net_amount' => DB::raw('IFNULL(net_amount, 0) + (' . $paymentAmount . ' * 0.92)'),
-                                'ikram' => DB::raw('IFNULL(ikram, 0) + ' . $ikramAmount),
-                                'selfikram' => DB::raw('IFNULL(selfikram, 0) + ' . ($record->ikram ?? 0)),
+                                'total_amount' => $paymentAmount,
+                                'net_amount' => $paymentAmount * 0.92,
+                                'ikram' => $ikramAmount,
+                                'selfikram' => $record->ikram ?? 0,
                                 'device_info' => $record->device_info,
                                 'note' => $record->note ?? '-',
                                 'customer' => $customerCount,
@@ -319,17 +348,16 @@ class CalculationResource extends Resource
                                     return $item->quantity . ' x ' . Product::find($item->product_id)->title . ' - ' . $item->price . '₺';
                                 })->implode(', '),
                                 'quantity' => $record->orderItems->sum('quantity'),
-                                'credit_card' => $paymentMethod === 'POS' ? DB::raw('IFNULL(credit_card, 0) + ' . $paymentAmount) : DB::raw('IFNULL(credit_card, 0)'),
-                                'cash_money' => $paymentMethod === 'Nakit' ? DB::raw('IFNULL(cash_money, 0) + ' . $paymentAmount) : DB::raw('IFNULL(cash_money, 0)'),
-                                'iban' => $paymentMethod === 'IBAN' ? DB::raw('IFNULL(iban, 0) + ' . $paymentAmount) : DB::raw('IFNULL(iban, 0)'),
+                                'credit_card' => $paymentMethod === 'POS' ? $paymentAmount : 0,
+                                'cash_money' => $paymentMethod === 'Nakit' ? $paymentAmount : 0,
+                                'iban' => $paymentMethod === 'IBAN' ? $paymentAmount : 0,
                                 'created_at' => $record->created_at,
                                 'updated_at' => now(),
-                            ]
-                        );
+                            ]);
+                        }
 
-                        $record->total_amount -= $paymentAmount;
-                        $record->total_amount -= $ikramAmount;
-                        $record->ikram -= $record->ikram;
+                        $record->total_amount -= ($paymentAmount + $ikramAmount);
+                        $record->ikram = ($record->ikram ?? 0) - ($record->ikram ?? 0);
                         $record->save();
 
                         if ($record->total_amount <= 0) {
