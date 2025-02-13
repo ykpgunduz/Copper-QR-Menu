@@ -212,8 +212,7 @@ class PastOrderResource extends Resource
                                         ->label('Net Hesap Tutarı (-%8 KDV)')
                                         ->required()
                                         ->suffix('₺')
-                                        ->numeric()
-                                        ->disabled(),
+                                        ->numeric(),
                                 ]),
                         ])
                         ->action(function (PastOrder $record, array $data) {
