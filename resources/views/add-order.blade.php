@@ -6,14 +6,8 @@
     <title>Masaya Sipariş Ekle</title>
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('css/new.css') }}">
-
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="bg-dark">
@@ -244,7 +238,6 @@
                 }
             };
 
-            // Form gönderimi öncesi kontrol
             $('#siparisForm').on('submit', function(e) {
                 if (!secilenMasa) {
                     e.preventDefault();
@@ -259,7 +252,6 @@
                 }
             });
 
-            // Kategori filtreleme
             $('.nav-pills .nav-link').click(function() {
                 $('.nav-pills .nav-link').removeClass('active');
                 $(this).addClass('active');
@@ -274,7 +266,6 @@
                 });
             });
 
-            // Ürün arama
             $('#urunArama').on('input', function() {
                 const aramaMetni = $(this).val().toLowerCase();
 
