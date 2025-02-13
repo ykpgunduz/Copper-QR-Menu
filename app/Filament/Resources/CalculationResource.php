@@ -246,24 +246,13 @@ class CalculationResource extends Resource
                                 ->label('Ödenecek Hesap Tutarı: ' . number_format($record->total_amount) . '₺')
                                 ->required()
                                 ->numeric()
+                                ->default($record->total_amount - $record->ikram)
                                 ->suffix('₺')
                                 ->helperText(function ($record) {
                                     return $record->ikram > 0 ? 'Self-Servis İkramı: ' . $record->ikram . '₺' : null;
                                 })
                                 ->minValue(0)
                                 ->maxValue($record->total_amount),
-
-                            Forms\Components\Toggle::make('pay_full')
-                                ->label('Hesabın Tamamını Seç')
-                                ->default(false)
-                                ->reactive()
-                                ->afterStateUpdated(function ($state, callable $set) use ($record) {
-                                    if ($state) {
-                                        $set('payment_amount', $record->total_amount);
-                                    } else {
-                                        $set('payment_amount', null);
-                                    }
-                                }),
 
                             Forms\Components\Grid::make(2)
                                 ->schema(array_filter([

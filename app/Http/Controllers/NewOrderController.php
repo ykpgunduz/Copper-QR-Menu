@@ -40,7 +40,6 @@ class NewOrderController extends Controller
         $tableNumber = $request->masa_no;
         $toplamTutar = 0;
 
-        // Mevcut siparişi kontrol et
         $existingOrder = Calculation::where('table_number', $tableNumber)->first();
 
         foreach ($request->urunler as $urunId => $urun) {
@@ -49,7 +48,6 @@ class NewOrderController extends Controller
             }
         }
 
-        // Sipariş kaydı oluştur veya güncelle
         if ($existingOrder) {
             $existingOrder->total_amount += $toplamTutar;
             $existingOrder->status = 'Masa';
@@ -65,7 +63,6 @@ class NewOrderController extends Controller
             $orderId = $calculation->id;
         }
 
-        // Ürünleri OrderItem tablosuna kaydet
         foreach ($request->urunler as $urunId => $urun) {
             if ($urun['adet'] > 0) {
                 OrderItem::create([
@@ -77,7 +74,6 @@ class NewOrderController extends Controller
             }
         }
 
-        // Bildirim gönder
         $notification = $tableNumber . ". Masa Sipariş Verdi!";
         Notification::make()
             ->title($notification)
