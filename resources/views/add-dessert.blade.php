@@ -3,46 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Copper | Kiloluk Tatlı</title>
+    <title>Kiloluk Tatlı Siparişi</title>
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-800">
-    <div class="min-h-screen py-6">
+    <div class="min-h-screen py-4">
         <div class="max-w-8xl mx-auto sm:px-6">
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
                 <div class="p-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <div class="mb-6">
-                                <div class="pt-4">
+                                <!-- Kiloluk Tatlılar Bölümü -->
+                                <div class="pt-2">
                                     <h3 class="text-lg font-semibold mb-4">Tatlı Seçip - Gramaj Giriniz</h3>
-                                    <div class="space-y-4">
-                                        <div id="selectedProduct" class="text-gray-900">Lütfen listeden bir ürün seçin</div>
-                                        <div class="flex gap-4">
-                                            <input type="number" id="weight" class="flex-1 rounded-md border-gray-300 shadow-sm p-2 border"
-                                                   placeholder="gram giriniz" step="1" style="border-color: green;">
-                                            <button id="addToCart" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700">
-                                                Ekle
-                                            </button>
+                                    <div class="flex gap-4 items-start">
+                                        <!-- Sol taraf: Seçilen ürün -->
+                                        <div class="w-1/2">
+                                            <div id="selectedProduct"
+                                                 class="h-[56px] p-3 border-2 rounded-md bg-gray-50 flex flex-col justify-center"
+                                                 style="border-color: #22c55e;">
+                                                <div class="text-gray-500 text-xs">Seçilen Ürün:</div>
+                                                <div class="selected-product-info text-gray-900 font-medium">Listeden bir ürün seçin</div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sağ taraf: Gram girişi -->
+                                        <div class="w-1/2">
+                                            <div class="flex gap-2">
+                                                <input type="number"
+                                                       id="weight"
+                                                       class="flex-1 rounded-md border-2 shadow-sm p-3 text-lg font-medium focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                                                       placeholder="Gram giriniz"
+                                                       step="1"
+                                                       style="border-color: #22c55e;">
+                                                <button id="addToCart"
+                                                        class="bg-green-600 text-white px-3 py-3 rounded-md hover:bg-green-700 whitespace-nowrap font-medium">
+                                                    ⏎ Enter
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
                                     @foreach($products as $product)
-                                        @if($product->active)
-                                            <div class="p-3 border rounded-lg hover:bg-gray-50 cursor-pointer product-item"
+                                        @if($product->active && $product->category->name === 'Kiloluk Tatlılar')
+                                            <div class="pl-2 pt-3 pb-3 border-2 border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer product-item"
                                                  data-id="{{ $product->id }}"
                                                  data-name="{{ $product->title }}"
-                                                 data-price="{{ $product->price }}">
+                                                 data-price="{{ $product->price }}"
+                                                 data-type="weight">
                                                 <div class="flex flex-col">
-                                                    <span class="font-medium text-sm mb-1">{{ $product->title }}</span>
-                                                    <span class="text-green-600 text-sm">{{ $product->price }}₺</span>
+                                                    <span class="text-sm font-bold text-gray-800 mb-1">{{ $product->title }}</span>
+                                                    <span class="text-sm font-medium text-green-600">{{ $product->price }}₺ / kg</span>
                                                 </div>
                                             </div>
                                         @endif
                                     @endforeach
+                                </div>
+
+                                <!-- Adetli Tatlılar Bölümü -->
+                                <div class="pt-8">
+                                    <h3 class="text-lg font-semibold mb-4">Adetli Tatlılar</h3>
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                        @foreach($products as $product)
+                                            @if($product->active && $product->category->name === 'Tatlılar')
+                                                <div class="pl-2 pt-3 pb-3 border-2 border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer piece-product-item relative"
+                                                     data-id="{{ $product->id }}"
+                                                     data-name="{{ $product->title }}"
+                                                     data-price="{{ $product->price }}"
+                                                     data-type="piece">
+                                                    <div class="flex flex-col">
+                                                        <span class="text-sm font-bold text-gray-800 mb-1">{{ $product->title }}</span>
+                                                        <span class="text-sm font-medium text-green-600">{{ $product->price }}₺ / adet</span>
+                                                    </div>
+                                                    <!-- Adet göstergesi -->
+                                                    <div class="quantity-badge hidden absolute -top-2 -right-2 bg-green-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">0</div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -74,7 +116,7 @@
                                                    name="received_amount"
                                                    id="receivedAmount"
                                                    class="w-full h-14 text-2xl font-bold rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 pl-4 pr-12"
-                                                   placeholder="0.00"
+                                                   placeholder="0"
                                                    step="0.01"
                                                    onkeypress="return event.keyCode != 13;">
                                             <span class="absolute right-4 top-1/2 -translate-y-1/2 text-xl font-bold text-gray-500">₺</span>
@@ -137,10 +179,17 @@
                     name: this.dataset.name,
                     price: parseFloat(this.dataset.price)
                 };
-                document.getElementById('selectedProduct').innerHTML = `
-                    <div class="font-medium">${selectedProduct.name}</div>
-                    <div class="text-green-600">${selectedProduct.price}₺</div>
+
+                // Seçilen ürün bilgisini güncelle
+                document.querySelector('.selected-product-info').innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <span class="truncate">${selectedProduct.name}</span>
+                        <span class="text-green-600 whitespace-nowrap">${selectedProduct.price}₺ / kg</span>
+                    </div>
                 `;
+
+                // Gram input'una fokuslan
+                document.getElementById('weight').focus();
             });
         });
 
@@ -221,21 +270,98 @@
             document.getElementById('ibanModal').classList.add('hidden');
         }
 
+        // Adetli ürün seçimi için event listener
+        document.querySelectorAll('.piece-product-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const product = {
+                    id: this.dataset.id,
+                    name: this.dataset.name,
+                    price: parseFloat(this.dataset.price),
+                    type: 'piece'
+                };
+
+                const existingItemIndex = cartItems.findIndex(item =>
+                    item.product_id === product.id && item.type === 'piece'
+                );
+
+                if (existingItemIndex !== -1) {
+                    cartItems[existingItemIndex].quantity += 1;
+                    cartItems[existingItemIndex].price = (product.price * cartItems[existingItemIndex].quantity).toFixed(2);
+                } else {
+                    const cartItem = {
+                        product_id: product.id,
+                        name: product.name,
+                        weight: null,
+                        quantity: 1,
+                        price: product.price.toFixed(2),
+                        type: 'piece'
+                    };
+                    cartItems.push(cartItem);
+                }
+
+                // Animasyon efekti ekle
+                const badge = this.querySelector('.quantity-badge');
+                badge.classList.add('scale-125');
+                setTimeout(() => {
+                    badge.classList.remove('scale-125');
+                }, 200);
+
+                updateCart();
+            });
+        });
+
         // UpdateCart fonksiyonunu güncelle
         function updateCart() {
             const cartItemsDiv = document.getElementById('cartItems');
             cartItemsDiv.innerHTML = '';
             let total = 0;
 
+            // Tüm adet rozetlerini sıfırla
+            document.querySelectorAll('.quantity-badge').forEach(badge => {
+                badge.classList.add('hidden');
+                badge.textContent = '0';
+            });
+
+            // Sepetteki ürünlerin adet rozetlerini güncelle
+            cartItems.forEach(item => {
+                if (item.type === 'piece') {
+                    const productCard = document.querySelector(`.piece-product-item[data-id="${item.product_id}"]`);
+                    if (productCard) {
+                        const badge = productCard.querySelector('.quantity-badge');
+                        badge.classList.remove('hidden');
+                        badge.textContent = item.quantity;
+                    }
+                }
+            });
+
             cartItems.forEach((item, index) => {
                 total += parseFloat(item.price);
+                const quantityText = item.type === 'piece' ?
+                    `${item.quantity} Adet` :
+                    `${item.weight}gr`;
+
                 cartItemsDiv.innerHTML += `
                     <div class="flex justify-between items-center p-3 bg-white rounded-lg">
                         <div>
                             <div class="font-medium">${item.name}</div>
-                            <div class="text-sm text-gray-500">${item.weight}gr</div>
+                            <div class="text-sm text-gray-500">${quantityText}</div>
                         </div>
                         <div class="flex items-center gap-4">
+                            <div class="flex items-center gap-2">
+                                ${item.type === 'piece' ? `
+                                    <button onclick="decreaseQuantity(${index})" class="text-gray-500 hover:text-gray-700">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                    <span class="mx-2">${item.quantity}</span>
+                                    <button onclick="increaseQuantity(${index})" class="text-gray-500 hover:text-gray-700">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                ` : ''}
+                            </div>
                             <span class="font-medium">${item.price} TL</span>
                             <button onclick="removeItem(${index})" class="text-red-500 hover:text-red-700">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -266,6 +392,52 @@
             cartItems.splice(index, 1);
             updateCart();
         }
+
+        // Adet arttırma fonksiyonu
+        function increaseQuantity(index) {
+            const item = cartItems[index];
+            const basePrice = parseFloat(item.price) / item.quantity;
+            item.quantity += 1;
+            item.price = (basePrice * item.quantity).toFixed(2);
+            updateCart();
+        }
+
+        // Adet azaltma fonksiyonu
+        function decreaseQuantity(index) {
+            const item = cartItems[index];
+            if (item.quantity > 1) {
+                const basePrice = parseFloat(item.price) / item.quantity;
+                item.quantity -= 1;
+                item.price = (basePrice * item.quantity).toFixed(2);
+                updateCart();
+            } else {
+                removeItem(index);
+            }
+        }
     </script>
+
+    <!-- Style eklemeleri -->
+    <style>
+        .quantity-badge {
+            transition: transform 0.2s ease-in-out;
+        }
+
+        /* Input için özel stil */
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Input placeholder stil */
+        input[type="number"]::placeholder {
+            color: #9ca3af;
+            font-weight: normal;
+        }
+    </style>
 </body>
 </html>

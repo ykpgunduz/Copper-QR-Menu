@@ -163,6 +163,11 @@
             color: #444;
         }
 
+        .item-name strong {
+            font-weight: bold;
+            color: #000;
+        }
+
         @media print {
             body {
                 margin: 0;
@@ -223,7 +228,22 @@
         <div class="items">
             @foreach(explode("\n", $products) as $product)
                 <div class="item-row">
-                    <div class="item-name">{{ $product }}</div>
+                    <div class="item-name">
+                        @php
+                            if (strpos($product, ' x ') !== false) {
+                                // Adetli ürün formatı: "3 x Magnolya - 120₺"
+                                $parts = explode(' - ', $product);
+                                $priceInfo = end($parts); // "120₺"
+                                $productInfo = explode(' x ', $parts[0]); // ["3", "Magnolya"]
+                                $quantity = $productInfo[0];
+                                $name = $productInfo[1];
+                                echo "<strong>{$quantity} x {$name}</strong> - {$priceInfo}";
+                            } else {
+                                // Kiloluk ürün formatı değişmedi
+                                echo $product;
+                            }
+                        @endphp
+                    </div>
                 </div>
             @endforeach
         </div>

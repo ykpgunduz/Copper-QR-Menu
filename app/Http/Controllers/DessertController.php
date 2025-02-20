@@ -11,9 +11,9 @@ class DessertController extends Controller
 {
     public function create()
     {
-        $products = Product::whereHas('category', function($query) {
-            $query->where('name', 'Kiloluk Tatlılar');
-        })->get();
+        $products = Product::where('active', true)
+            ->orderBy('title', 'asc')
+            ->get();
 
         return view('add-dessert', compact('products'));
     }
@@ -40,15 +40,29 @@ class DessertController extends Controller
         $iban = $paymentMethod === 'iban' ? $receivedAmount : 0;
 
         $formattedProducts = array_map(function ($item) {
-            return sprintf(
-                "%s (%.0f gr) - %.2f₺",
-                $item['name'],
-                $item['weight'],
-                floatval($item['price'])
-            );
+            if (isset($item['type']) && $item['type'] === 'piece') {
+                return sprintf(
+                    "%d x %s - %.2f₺",
+                    $item['quantity'],
+                    $item['name'],
+                    floatval($item['price'])
+                );
+            } else {
+                return sprintf(
+                    "%s (%.0f gr) - %.2f₺",
+                    $item['name'],
+                    $item['weight'],
+                    floatval($item['price'])
+                );
+            }
         }, $orderItems);
 
         $orderNumber = 'KT-' . strtoupper(uniqid());
+
+        $totalQuantity = array_sum(array_map(function ($item) {
+            return isset($item['type']) && $item['type'] === 'piece' ?
+                $item['quantity'] : 1;
+        }, $orderItems));
 
         DB::table('past_orders')->insert([
             'session_id' => $request->session()->getId(),
@@ -56,7 +70,7 @@ class DessertController extends Controller
             'total_amount' => $totalAmount - $ikramAmount,
             'net_amount' => $receivedAmount,
             'products' => implode("\n", $formattedProducts),
-            'quantity' => count($orderItems),
+            'quantity' => $totalQuantity,
             'order_number' => $orderNumber,
             'cash_money' => $cashMoney,
             'credit_card' => $creditCard,
@@ -89,6 +103,7 @@ class DessertController extends Controller
             ->whereHas('category', function($query) {
                 $query->where('name', 'Kiloluk Tatlılar');
             })
+            ->orderBy('title', 'asc')
             ->get();
 
         $cafe = Cafe::find(1);

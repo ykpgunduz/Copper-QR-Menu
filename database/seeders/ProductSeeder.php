@@ -542,62 +542,140 @@ class ProductSeeder extends Seeder
             ,
             [
                 'thumbnail' => 'fistikli-baklava.jpg',
-                'title' => 'Fıstıklı Baklava (1kg)',
-                'price' => 850.00,
+                'title' => 'Fıstıklı Baklava',
+                'price' => 500.00,
                 'category' => 'Kiloluk Tatlılar'
             ],
             [
                 'thumbnail' => 'cevizli-baklava.jpg',
-                'title' => 'Cevizli Baklava (1kg)',
-                'price' => 750.00,
+                'title' => 'Cevizli Baklava',
+                'price' => 400.00,
                 'category' => 'Kiloluk Tatlılar'
             ],
             [
-                'thumbnail' => 'fistikli-kadayif.jpg',
-                'title' => 'Fıstıklı Kadayıf (1kg)',
-                'price' => 800.00,
-                'category' => 'Kiloluk Tatlılar'
-            ],
-            [
-                'thumbnail' => 'cevizli-kadayif.jpg',
-                'title' => 'Cevizli Kadayıf (1kg)',
-                'price' => 700.00,
-                'category' => 'Kiloluk Tatlılar'
-            ],
-            [
-                'thumbnail' => 'fistikli-sarma.jpg',
-                'title' => 'Fıstıklı Sarma (1kg)',
-                'price' => 850.00,
+                'thumbnail' => 'sobiyet.jpg',
+                'title' => 'Şöbiyet',
+                'price' => 550.00,
                 'category' => 'Kiloluk Tatlılar'
             ],
             [
                 'thumbnail' => 'cevizli-sarma.jpg',
-                'title' => 'Cevizli Sarma (1kg)',
-                'price' => 750.00,
+                'title' => 'Cevizli Sarma',
+                'price' => 350.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'kare-baklava.jpg',
+                'title' => 'Kare Baklava',
+                'price' => 550.00,
                 'category' => 'Kiloluk Tatlılar'
             ],
             [
                 'thumbnail' => 'fistikli-burma.jpg',
-                'title' => 'Fıstıklı Burma (1kg)',
-                'price' => 900.00,
+                'title' => 'Fıstıklı Burma',
+                'price' => 500.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'fistikli-sarma.jpg',
+                'title' => 'Fıstıklı Sarma',
+                'price' => 650.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'havuc-dilim.jpg',
+                'title' => 'Havuç Dilim',
+                'price' => 500.00,
                 'category' => 'Kiloluk Tatlılar'
             ],
             [
                 'thumbnail' => 'cevizli-burma.jpg',
-                'title' => 'Cevizli Burma (1kg)',
-                'price' => 800.00,
+                'title' => 'Cevizli Burma',
+                'price' => 450.00,
                 'category' => 'Kiloluk Tatlılar'
             ],
             [
-                'thumbnail' => 'fistikli-dolama.jpg',
-                'title' => 'Fıstıklı Dolama (1kg)',
-                'price' => 850.00,
+                'thumbnail' => 'sekerpare.jpg',
+                'title' => 'Şekerpare',
+                'price' => 300.00,
                 'category' => 'Kiloluk Tatlılar'
             ],
             [
-                'thumbnail' => 'havuc-dilimi.jpg',
-                'title' => 'Havuç Dilimi (1kg)',
-                'price' => 700.00,
+                'thumbnail' => 'sultan-tatlisi.jpg',
+                'title' => 'Sultan Tatlısı',
+                'price' => 500.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'sambali.jpg',
+                'title' => 'Şambali',
+                'price' => 250.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'midye-tatlisi.jpg',
+                'title' => 'Midye Tatlısı',
+                'price' => 500.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'fistikli-kadayif.jpg',
+                'title' => 'Fıstıklı Kadayıf',
+                'price' => 550.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'soguk-baklava.jpg',
+                'title' => 'Soğuk Baklava',
+                'price' => 500.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'kurabiye.jpg',
+                'title' => 'Kurabiye',
+                'price' => 450.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'karisik-tatli.jpg',
+                'title' => 'Karışık Tatlı',
+                'price' => 600.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'soguk-kadayif.jpg',
+                'title' => 'Soğuk Kadayıf',
+                'price' => 550.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'fistikli-luks-tereyagli.jpg',
+                'title' => 'Fıstıklı Lüks Tereyağlı',
+                'price' => 550.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'sutlu-nuriye.jpg',
+                'title' => 'Sütlü Nuriye',
+                'price' => 450.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'bulbul-yuvasi.jpg',
+                'title' => 'Bülbül Yuvası',
+                'price' => 450.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'cevizli-ev-baklavasi.jpg',
+                'title' => 'Cevizli Ev Baklavası',
+                'price' => 475.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'fistikli-ozel-baklava.jpg',
+                'title' => 'Fıstıklı Özel Baklava',
+                'price' => 575.00,
                 'category' => 'Kiloluk Tatlılar'
             ]
         ];
