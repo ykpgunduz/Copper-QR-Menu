@@ -12,6 +12,7 @@ use App\Http\Controllers\NewOrderController;
 
 Route::get('/', function () {return redirect('https://harpysocial.com');});
 
+Route::get('/kiloluk-tatlilar', [DessertController::class, 'dessert'])->name('kiloluk-tatli');
 Route::get('/qr-menu', [HomeController::class, 'index'])->name('index');
 Route::post('/qr-menu', [HomeController::class, 'addToCart'])->name('addToCart');
 Route::get('/sepet', [CartController::class, 'viewCart'])->name('sepet');

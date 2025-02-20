@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cafe;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -80,5 +81,18 @@ class DessertController extends Controller
             'creditCard' => $creditCard,
             'iban' => $iban
         ]);
+    }
+
+    public function dessert()
+    {
+        $products = Product::where('active', true)
+            ->whereHas('category', function($query) {
+                $query->where('name', 'Kiloluk Tatlılar');
+            })
+            ->get();
+
+        $cafe = Cafe::find(1);
+
+        return view('kiloluk-tatlilar', compact('products', 'cafe'));
     }
 }

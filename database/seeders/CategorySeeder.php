@@ -50,6 +50,11 @@ class CategorySeeder extends Seeder
                 'icon' => 'fa-solid fa-fire-flame-curved',
                 'color' => '#B40000',
             ],
+            [
+                'name' => 'Kiloluk Tatlılar',
+                'icon' => 'fa-solid fa-candy-cane',
+                'color' => '#B40000',
+            ],
         ];
 
         foreach ($categories as $category) {

@@ -539,6 +539,67 @@ class ProductSeeder extends Seeder
                 'price' => 240.00,
                 'category' => 'Tatlılar'
             ]
+            ,
+            [
+                'thumbnail' => 'fistikli-baklava.jpg',
+                'title' => 'Fıstıklı Baklava (1kg)',
+                'price' => 850.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'cevizli-baklava.jpg',
+                'title' => 'Cevizli Baklava (1kg)',
+                'price' => 750.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'fistikli-kadayif.jpg',
+                'title' => 'Fıstıklı Kadayıf (1kg)',
+                'price' => 800.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'cevizli-kadayif.jpg',
+                'title' => 'Cevizli Kadayıf (1kg)',
+                'price' => 700.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'fistikli-sarma.jpg',
+                'title' => 'Fıstıklı Sarma (1kg)',
+                'price' => 850.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'cevizli-sarma.jpg',
+                'title' => 'Cevizli Sarma (1kg)',
+                'price' => 750.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'fistikli-burma.jpg',
+                'title' => 'Fıstıklı Burma (1kg)',
+                'price' => 900.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'cevizli-burma.jpg',
+                'title' => 'Cevizli Burma (1kg)',
+                'price' => 800.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'fistikli-dolama.jpg',
+                'title' => 'Fıstıklı Dolama (1kg)',
+                'price' => 850.00,
+                'category' => 'Kiloluk Tatlılar'
+            ],
+            [
+                'thumbnail' => 'havuc-dilimi.jpg',
+                'title' => 'Havuç Dilimi (1kg)',
+                'price' => 700.00,
+                'category' => 'Kiloluk Tatlılar'
+            ]
         ];
 
         foreach ($products as $product) {
