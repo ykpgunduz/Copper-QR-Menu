@@ -12,12 +12,18 @@ class AnnualDrinkWidget extends ChartWidget
     protected function getData(): array
     {
         $annualOrders = PastOrder::whereYear('created_at', now()->year)->get();
+
         $parsedData = [];
 
         foreach ($annualOrders as $order) {
+            if (empty($order->products)) {
+                continue;
+            }
+
             $lines = explode(',', $order->products);
             foreach ($lines as $line) {
-                if (preg_match('/(\d+) x ([^=]+) = (\d+)₺/', trim($line), $matches)) {
+                $line = trim($line);
+                if (preg_match('/(\d+)\s*x\s*([^-]+?)\s*-\s*(\d+)₺/', $line, $matches)) {
                     $quantity = (int) $matches[1];
                     $productName = trim($matches[2]);
 
@@ -29,12 +35,32 @@ class AnnualDrinkWidget extends ChartWidget
             }
         }
 
+        if (empty($parsedData)) {
+            return [
+                'datasets' => [
+                    [
+                        'label' => 'İçecek Miktarı',
+                        'data' => [1],
+                        'backgroundColor' => ['#cccccc'],
+                    ],
+                ],
+                'labels' => ['Veri Bulunamadı'],
+            ];
+        }
+
         $beverageLabels = array_keys($parsedData);
         $beverageQuantities = array_values($parsedData);
 
+        // Koyu ve canlı renkler paleti
         $colors = [
-            '#1F3A93', '#E74C3C', '#2C3E50', '#27AE60', '#8E44AD',
-            '#F39C12', '#D35400', '#0D3C6E', '#C8102E', '#1C1C1C'
+            '#1a237e', '#880e4f', '#1b5e20', '#3e2723', '#263238', // Çok koyu tonlar
+            '#0d47a1', '#b71c1c', '#004d40', '#311b92', '#4a148c',
+            '#006064', '#e65100', '#33691e', '#827717', '#bf360c', // Koyu canlı tonlar
+            '#01579b', '#880e4f', '#1b5e20', '#4a148c', '#3e2723',
+            '#1a237e', '#b71c1c', '#004d40', '#ff6f00', '#4e342e', // Karışık koyu tonlar
+            '#0d47a1', '#6a1b9a', '#2e7d32', '#4e342e', '#37474f',
+            '#283593', '#ad1457', '#1565c0', '#6a1b9a', '#4527a0', // Zengin koyu tonlar
+            '#00838f', '#c62828', '#2e7d32', '#4a148c', '#3e2723'
         ];
 
         $backgroundColor = array_slice($colors, 0, count($beverageLabels));
