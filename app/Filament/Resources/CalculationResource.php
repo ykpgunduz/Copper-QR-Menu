@@ -221,7 +221,7 @@ class CalculationResource extends Resource
                     ->modalSubheading('Bu işlem geri alınamaz, masa komple silinecektir.')
                     ->modalButton('Evet, Sil'),
 
-                    Action::make('payment')
+                Action::make('payment')
                     ->label('Hesap')
                     ->icon('heroicon-o-banknotes')
                     ->visible(fn ($record) => $record->total_amount > 0)
@@ -234,6 +234,7 @@ class CalculationResource extends Resource
                             Forms\Components\Radio::make('payment_method')
                                 ->label('Ödeme Yöntemi')
                                 ->required()
+                                ->default('Nakit')
                                 ->validationMessages(['required' => '⚠️ Ödeme Yöntemi Seçmelisiniz!'])
                                 ->options([
                                     'POS' => 'POS',
@@ -255,20 +256,21 @@ class CalculationResource extends Resource
                                 ->maxValue($record->total_amount),
 
                             Forms\Components\Grid::make(2)
-                                ->schema(array_filter([
-                                    is_null($record->customer) ? TextInput::make('customer_count')
+                                ->schema([
+                                    TextInput::make('customer_count')
                                         ->label('Kişi Sayısı')
                                         ->required()
                                         ->numeric()
+                                        ->default($record->customer ?? 1)
                                         ->minValue(1)
-                                        ->maxValue(20) : null,
+                                        ->maxValue(20),
 
                                     TextInput::make('ikram_amount')
                                         ->label('İkram Tutarı')
                                         ->numeric()
                                         ->minValue(0)
                                         ->maxValue($record->total_amount),
-                                ])),
+                                ]),
                         ];
                         return $formFields;
                     })
