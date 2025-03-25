@@ -62,7 +62,7 @@
                             <!-- Bahçe Masaları -->
                             <div class="col-3">
                                 <div class="d-flex flex-column col-md-6">
-                                    @for ($i = 3; $i >= 1; $i--)
+                                    @for ($i = 5; $i >= 1; $i--)
                                         <button type="button" class="btn btn-outline-primary masa-button mb-2 {{ isset($aktifMasalar[$i]) ? 'masa-aktif' : '' }}" data-masa-no="{{ $i }}">
                                             Bahçe {{ $i }}
                                         </button>
@@ -74,7 +74,7 @@
                             <div class="col-9 p-0">
                                 <!-- B Masaları -->
                                 <div class="d-flex justify-content-center mb-4">
-                                    @for ($i = 4; $i <= 12; $i++)
+                                    @for ($i = 6; $i <= 14; $i++)
                                         <button type="button" class="btn btn-outline-primary masa-button mx-1 {{ isset($aktifMasalar[$i]) ? 'masa-aktif' : '' }}" data-masa-no="{{ $i }}">
                                             B-{{ $i }}
                                         </button>
@@ -83,7 +83,7 @@
 
                                 <!-- Salon Masaları 13-14 -->
                                 <div class="d-flex justify-content-center mb-4">
-                                    @for ($i = 14; $i >= 13; $i--)
+                                    @for ($i = 17; $i >= 15; $i--)
                                         <button type="button" class="btn btn-outline-primary masa-button mx-1 {{ isset($aktifMasalar[$i]) ? 'masa-aktif' : '' }}" data-masa-no="{{ $i }}">
                                             Salon {{ $i }}
                                         </button>
@@ -92,7 +92,7 @@
 
                                 <!-- Salon Masaları 15-17 -->
                                 <div>
-                                    @for ($i = 17; $i >= 15; $i--)
+                                    @for ($i = 20; $i >= 18; $i--)
                                         <button type="button" class="btn btn-outline-primary masa-button mx-1 {{ isset($aktifMasalar[$i]) ? 'masa-aktif' : '' }}" data-masa-no="{{ $i }}">
                                             Salon {{ $i }}
                                         </button>

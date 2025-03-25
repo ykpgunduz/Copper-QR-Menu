@@ -124,7 +124,7 @@ class CalculationResource extends Resource
                     <div style="width: 120px; box-shadow: 0px 0px 5px 5px rgba(0, 190, 255, 0.7); opacity: 0.7; padding: 5px; margin: 0 15px 0 15px; text-align: center;">Self Servis</div>
                     <div style="width: 120px; box-shadow: 0px 0px 5px 5px rgba(128, 128, 128, 0.7); opacity: 0.7; padding: 5px; margin: 0 15px 0 15px; text-align: center;">Masa Askıda</div>
                     <div style="width: 250px; box-shadow: 0px 0px 5px 5px rgba(128, 128, 128, 0.3); opacity: 0.8; padding: 5px; margin: 0 15px 0 15px; text-align: center; font-size: 13px;">
-                        Bahçe: 1-3 | Bar: 4-12 | Salon: 13-17
+                        Bahçe: 1-5 | Bar: 6-14 | Salon: 15-21
                     </div>
                 </div>
             '))
@@ -137,9 +137,9 @@ class CalculationResource extends Resource
                         ->html()
                         ->formatStateUsing(function ($state) {
                             $prefix = match(true) {
-                                in_array($state, [1,2,3]) => 'Bahçe',
-                                in_array($state, [4,5,6,7,8,9,10,11,12]) => 'Bar',
-                                in_array($state, [13,14,15,16,17,18,19,20]) => 'Salon',
+                                in_array($state, [1,2,3,4,5]) => 'Bahçe',
+                                in_array($state, [6,7,8,9,10,11,12,13,14]) => 'Bar',
+                                in_array($state, [15,16,17,18,19,20,21]) => 'Salon',
                                 default => ''
                             };
                             return '<span style="font-size: 20px; font-weight: bold;">' . $prefix . ' ' . $state . '</span>';
