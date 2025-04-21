@@ -109,7 +109,7 @@
         let pageNum = 1;
         let pageRendering = false;
         let pageNumPending = null;
-        const scale = 1.0;
+        const scale = 0.8;
         const container = document.getElementById('pdfContainer');
         const loading = document.getElementById('loading');
 
