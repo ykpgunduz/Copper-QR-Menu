@@ -79,4 +79,9 @@ class HomeController extends Controller
 
         return redirect()->route('admin.orders');
     }
+
+    public function remoteMenu()
+    {
+        return view('remote-menu');
+    }
 }
