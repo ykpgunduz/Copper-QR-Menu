@@ -76,31 +76,6 @@
             color: #666;
         }
 
-        .zoom-controls {
-            position: fixed;
-            bottom: 90px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 9998;
-        }
-
-        .zoom-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: white;
-            color: #333;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            cursor: pointer;
-            font-size: 20px;
-        }
-
         @media (max-width: 768px) {
             #pdfContainer {
                 padding: 5px;
@@ -115,26 +90,12 @@
                 height: 50px;
                 font-size: 30px;
             }
-
-            .zoom-controls {
-                bottom: 80px;
-            }
-
-            .zoom-btn {
-                width: 35px;
-                height: 35px;
-                font-size: 16px;
-            }
         }
     </style>
 </head>
 <body>
     <div id="pdfContainer"></div>
     <div id="loading" class="loading">Menü yükleniyor...</div>
-    <div class="zoom-controls">
-        <button class="zoom-btn" onclick="zoomIn()">+</button>
-        <button class="zoom-btn" onclick="zoomOut()">-</button>
-    </div>
     <a href="https://wa.me/905358298020" target="_blank" class="whatsapp-btn">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
@@ -148,29 +109,9 @@
         let pageNum = 1;
         let pageRendering = false;
         let pageNumPending = null;
-        let currentScale = 1.0;
+        const scale = 1.0;
         const container = document.getElementById('pdfContainer');
         const loading = document.getElementById('loading');
-
-        // Zoom fonksiyonları
-        function zoomIn() {
-            currentScale += 0.1;
-            renderAllPages();
-        }
-
-        function zoomOut() {
-            if (currentScale > 0.5) {
-                currentScale -= 0.1;
-                renderAllPages();
-            }
-        }
-
-        // Tüm sayfaları yeniden render et
-        function renderAllPages() {
-            container.innerHTML = '';
-            pageNum = 1;
-            renderPage(pageNum);
-        }
 
         // PDF'i yükle
         pdfjsLib.getDocument("{{ asset('pdf/menu.pdf') }}").promise.then(function(pdf) {
@@ -183,7 +124,7 @@
         function renderPage(num) {
             pageRendering = true;
             pdfDoc.getPage(num).then(function(page) {
-                const viewport = page.getViewport({ scale: currentScale });
+                const viewport = page.getViewport({ scale: scale });
                 const canvas = document.createElement('canvas');
                 const context = canvas.getContext('2d');
                 canvas.height = viewport.height;
@@ -230,13 +171,6 @@
                 }
             }
         });
-
-        // Dokunmatik zoom engelleme
-        document.addEventListener('touchmove', function(e) {
-            if (e.touches.length > 1) {
-                e.preventDefault();
-            }
-        }, { passive: false });
     </script>
 </body>
 </html>
