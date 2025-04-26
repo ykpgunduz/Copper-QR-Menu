@@ -13,6 +13,8 @@ use App\Http\Controllers\NewOrderController;
 Route::get('/', function () {return redirect('https://harpysocial.com');});
 
 Route::get('/remote-menu', [HomeController::class, 'remoteMenu'])->name('remote-menu');
+Route::get('/tr-remote-menu', [HomeController::class, 'trRemoteMenu'])->name('tr-remote-menu');
+Route::get('/en-remote-menu', [HomeController::class, 'enRemoteMenu'])->name('en-remote-menu');
 Route::get('/kiloluk-tatlilar', [DessertController::class, 'dessert'])->name('kiloluk-tatli');
 Route::get('/qr-menu', [HomeController::class, 'index'])->name('index');
 Route::post('/qr-menu', [HomeController::class, 'addToCart'])->name('addToCart');

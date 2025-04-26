@@ -84,4 +84,20 @@ class HomeController extends Controller
     {
         return view('remote-menu');
     }
+
+    public function trRemoteMenu()
+    {
+        $categories = Category::where('name', '!=', 'Kiloluk Tatlılar')->get();
+        $products = Product::all();
+        $cafe = Cafe::first();
+        return view('tr-remote-menu', compact('products', 'categories', 'cafe'));
+    }
+
+    public function enRemoteMenu()
+    {
+        $categories = Category::where('name', '!=', 'Kiloluk Tatlılar')->get();
+        $products = Product::all();
+        $cafe = Cafe::first();
+        return view('en-remote-menu', compact('products', 'categories', 'cafe'));
+    }
 }

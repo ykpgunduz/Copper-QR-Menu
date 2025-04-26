@@ -1,5 +1,5 @@
-# PHP 8.2.0 imajını kullanalım
-FROM php:8.2.0-fpm
+# PHP 8.3 imajını kullanalım
+FROM php:8.3-fpm
 
 # ICU ve gerekli araçları yükleyin
 RUN apt-get update && apt-get install -y \
