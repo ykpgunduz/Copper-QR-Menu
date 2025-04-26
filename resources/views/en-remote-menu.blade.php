@@ -130,7 +130,7 @@
 </head>
 <body>
     <div id="pdfContainer"></div>
-    <div id="loading" class="loading">Menü yükleniyor...</div>
+    <div id="loading" class="loading">Just a moment...</div>
     <a href="https://wa.me/905358298020" target="_blank" class="whatsapp-container">
         <div class="whatsapp-btn">
             <i class="fa-brands fa-whatsapp"></i>
